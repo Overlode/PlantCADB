@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.icec.plantcadb.mapper.DatabaseMapper">
+    <select id="getAllClass" resultType="Class">
+        select * from class
+    </select>
+
+    <select id="getClassByNo" resultType="Class">
+        select * from class where classno = #{classNo}
+    </select>
+
+    <select id="getTissueByNo" resultType="Tissue">
+        select * from tissue where tissueno = #{tissueNo}
+    </select>
+
+    <select id="getAllTissue" resultType="Tissue">
+        select * from tissue
+    </select>
+
+    <select id="getAllSpecies" resultType="Species">
+        select * from species
+    </select>
+
+    <select id="getSpeciesByNo" resultType="Species">
+        select * from species where speciesno = #{speciesNo}
+    </select>
+
+    <select id="getAllLayout" resultType="Layout">
+        select * from layout
+    </select>
+
+    <select id="getLayoutByNo" resultType="Layout">
+        select * from layout where layoutno = #{layoutNo}
+    </select>
+
+    <select id="getAllDataType" resultType="DataType">
+        select * from datatype
+    </select>
+
+    <select id="getDataTypeByNo" resultType="DataType">
+        select * from datatype where datano = #{dataNo}
+    </select>
+
+    <select id="getAllSamInfo" resultType="SamInfo">
+        SELECT saminfo.*,classify.celltypesspecific,classify.tissuespecific,classify.genotypevariation,classify.abioticstress,classify.experimentaltechnology,development,class.classname,datatype.typename,layout.layoutname,species.speciesname,tissue.tissuename FROM saminfo,classify,class,datatype,layout,species,tissue where tissue.tissueno=saminfo.tissueno and saminfo.samno = classify.samno and class.classno = saminfo.classno and saminfo.layoutno=layout.layoutno and saminfo.speciesno = species.speciesno and datatype.datano = saminfo.datano
+        <if test="tissueNo != null and tissueNo != '' and tissueNo != 0">
+            and saminfo.tissueNo = #{tissueNo}
+        </if>
+        <if test="dataNo != null and dataNo != '' and dataNo != 0">
+            and saminfo.dataNo = #{dataNo}
+        </if>
+        <if test="classNo != null and classNo != '' and classNo != 0">
+            and saminfo.classNo = #{classNo}
+        </if>
+        <if test="layoutNo != null and layoutNo != '' and layoutNo != 0">
+            and saminfo.layoutNo = #{layoutNo}
+        </if>
+        <if test="speciesNo != null and speciesNo != '' and speciesNo != 0">
+            and saminfo.speciesNo = #{speciesNo}
+        </if>
+        <if test="option != null and option != ''">
+            and classify.${option} = 1
+        </if>
+        <if test="database != null">
+            and saminfo.issra = #{database}
+        </if>
+    </select>
+
+
+    <select id="getSamInfoByClassNo" resultType="SamInfo">
+        SELECT saminfo.*,class.classname,datatype.typename,layout.layoutname,species.speciesname,tissue.tissuename FROM saminfo,class,datatype,layout,species,tissue where saminfo.classno = #{classNo} and tissue.tissueno=saminfo.tissueno and class.classno = saminfo.classno and saminfo.layoutno=layout.layoutno and saminfo.speciesno = species.speciesno and datatype.datano = saminfo.datano order by saminfo.samno
+    </select>
+
+    <select id="getSamInfoByDataNo" resultType="SamInfo">
+        SELECT saminfo.*,class.classname,datatype.typename,layout.layoutname,species.speciesname,tissue.tissuename FROM saminfo,class,datatype,layout,species,tissue where saminfo.datano = #{dataNo} and tissue.tissueno=saminfo.tissueno and class.classno = saminfo.classno and saminfo.layoutno=layout.layoutno and saminfo.speciesno = species.speciesno and datatype.datano = saminfo.datano order by saminfo.samno
+    </select>
+    <select id="getSamInfoByTissueNo" resultType="SamInfo">
+        SELECT saminfo.*,class.classname,datatype.typename,layout.layoutname,species.speciesname,tissue.tissuename FROM saminfo,class,datatype,layout,species,tissue where saminfo.tissueno = #{tissueNo} and tissue.tissueno=saminfo.tissueno and class.classno = saminfo.classno and saminfo.layoutno=layout.layoutno and saminfo.speciesno = species.speciesno and datatype.datano = saminfo.datano order by saminfo.samno
+    </select>
+    <select id="getSamInfoBySpeciesNo" resultType="SamInfo">
+        SELECT saminfo.*,class.classname,datatype.typename,layout.layoutname,species.speciesname,tissue.tissuename FROM saminfo,class,datatype,layout,species,tissue where saminfo.speciesno = #{speciesNo} and motif!='' and tissue.tissueno=saminfo.tissueno and class.classno = saminfo.classno and saminfo.layoutno=layout.layoutno and saminfo.speciesno = species.speciesno and datatype.datano = saminfo.datano order by saminfo.samno
+    </select>
+    <select id="getSamInfoByLayoutNo" resultType="SamInfo">
+        SELECT saminfo.*,class.classname,datatype.typename,layout.layoutname,species.speciesname,tissue.tissuename FROM saminfo,class,datatype,layout,species,tissue where saminfo.layoutno = #{layoutNo} and tissue.tissueno=saminfo.tissueno and class.classno = saminfo.classno and saminfo.layoutno=layout.layoutno and saminfo.speciesno = species.speciesno and datatype.datano = saminfo.datano order by saminfo.samno
+    </select>
+
+    <select id="getAllSamInfoCount" resultType="Integer">
+        select count(*) from saminfo
+    </select>
+
+
+    <insert id="addFootprint" parameterType="Footprint" >
+        insert into footprint (samno, `reads`, peaks, tagcounts, footprints) VALUES (#{footprint.samNo}, #{footprint.reads},#{footprint.peaks},#{footprint.tagCounts}, #{footprint.footprints})
+    </insert>
+
+    <select id="getFootprintBySamNo" resultType="Footprint">
+        select * from footprint where samno = #{samNo}
+    </select>
+
+    <select id="getSamInfoBySamNo" resultType="SamInfo">
+        select saminfo.*,class.classname,datatype.typename,layout.layoutname,species.speciesname,tissue.tissuename from saminfo,class,datatype,layout,species,tissue where saminfo.samno = #{samNo} and tissue.tissueno=saminfo.tissueno and class.classno = saminfo.classno and saminfo.layoutno=layout.layoutno and saminfo.speciesno = species.speciesno and datatype.datano = saminfo.datano order by saminfo.samno
+    </select>
+
+    <select id="getSamInfoBySamId" resultType="SamInfo">
+        select saminfo.*,class.classname,datatype.typename,layout.layoutname,species.speciesname,tissue.tissuename from saminfo,class,datatype,layout,species,tissue where saminfo.samid = #{samId} and tissue.tissueno=saminfo.tissueno and class.classno = saminfo.classno and saminfo.layoutno=layout.layoutno and saminfo.speciesno = species.speciesno and datatype.datano = saminfo.datano order by saminfo.samno
+    </select>
+
+    <select id="getSamIdBySpeciesNo" resultType="String">
+        select samid from saminfo where speciesno = #{speciesNo}
+    </select>
+
+    <select id="getMotifBySpeciesNo" resultType="String">
+        SELECT motif FROM plantcadb.saminfo where speciesno=#{speciesNo} group by motif
+    </select>
+
+    <select id="getSamIdByATAC" resultType="String">
+        SELECT samid FROM saminfo WHERE samid LIKE #{ATAC};
+    </select>
+    <select id="getSamNoBySamId" resultType="Integer">
+        select samNo from saminfo where samid = #{samId};
+    </select>
+    <select id="getAllSamId" resultType="String">
+        select samid from saminfo
+    </select>
+    <select id="getIndexFormCountByLine" resultType="Integer">
+        select count(*) from saminfo,class,datatype,layout,species,tissue where saminfo.classno = #{classNo} and saminfo.datano = #{dataNo} and saminfo.speciesno=#{speciesNo} and saminfo.issra=#{database} and tissue.tissueno=saminfo.tissueno and class.classno = saminfo.classno and saminfo.layoutno=layout.layoutno and saminfo.speciesno = species.speciesno and datatype.datano = saminfo.datano;
+    </select>
+<!--    <update id="updateDatabaseInSamInfo">-->
+<!--        update classify set classify.samno=#{data} where samid = #{samId}-->
+<!--    </update>-->
+</mapper>

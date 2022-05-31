@@ -1,0 +1,26 @@
+footer { 
+  font: 100% arial, sans-serif;
+  height: 130px;
+  padding: 20px 0 5px 0;
+  text-align: center; 
+  background: #00785a;
+  color: #FFF;
+  margin: 0 0 0 0;
+  border-top: 5px solid #8FBC8F;
+  font-family: Century;
+}
+
+footer p { 
+  line-height: 1.7em;
+  padding: 0 0 10px 0;
+}
+
+footer a { 
+  color: #FFF;
+  text-decoration: none;
+}
+
+footer a:hover { 
+  color: #FFF;
+  text-decoration: none;
+}

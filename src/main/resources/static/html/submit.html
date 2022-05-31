@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>PlantCADB-Plant Chromatin Accessibility Database</title>
+	<link rel="icon" type="image/x-icon" href="/PlantCADB/image/favicon.ico">
+	<link href="/PlantCADB/css/bootstrap.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="/PlantCADB/css/header.css">
+	<link rel="stylesheet" href="/PlantCADB/css/footer.css">
+
+
+
+</head>
+
+<body>
+<header>
+	<div class="navbar navbar-default navbar-static-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/PlantCADB/index"><b style="color:#fff"><i style="color:white">PlantCADB</i></b></a>
+			</div>
+			<div class="navbar-collapse collapse ">
+				<ul class="nav navbar-nav">
+					<li><a href="/PlantCADB/index">Home</a></li>
+					<li><a href="/PlantCADB/data-browse">Data-Browse</a></li>
+					<li class="active"><a href="/PlantCADB/search">Search</a></li>
+					<li><a href="/PlantCADB/Analysis">Analysis</a></li>
+					<li><a href="/PlantCADB/Genome-Browser">Genome-Browser</a></li>
+					<li><a href="/PlantCADB/download">Download</a></li>
+					<li  class="active"><a href="/PlantCADB/submit">Submit</a></li>
+					<li><a href="/PlantCADB/help">Help</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</header>
+
+
+<div class="container">
+
+	<div class="row">
+		<div class="col-lg-12">
+			<center>
+<!--				<img src="public/img/submit_title.png"><br>-->
+				<h2><i style="color :#258A96;font-size: 150%">Share Your Data</i></h2><br><br>
+			</center>
+		</div>
+	</div>	
+
+	<div class="row">
+		<div class="col-lg-6">
+			<div style="font-size: 120%">
+			<p>If you want to share your data, please fill out the necessary information in the form  and we will add it to PlantCAdb soon. Thank you! </p>
+			</div>
+			<form class="form-horizontal" action="/PlantCADB/thanks" method="GET" enctype="multipart/form-data">
+
+
+				<div class="alert alert-success" role="alert">
+					<h4><font color='black'>Sample Description</font></h4>
+					<div class="form-group">
+						<label for="inputEmail3" class="col-sm-4 control-label">Data Type</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" name="biosample_type" placeholder="Non-essential option">
+						</div>
+					</div>
+ 					<div class="form-group">
+						<label for="inputPassword3" class="col-sm-4 control-label">Tissue</label>
+   						<div class="col-sm-8">
+     					 <input type="text" class="form-control" name="tissue_type" placeholder="Non-essential option">
+  						 </div>
+ 					</div>
+ 					<div class="form-group">
+						<label for="inputPassword3" class="col-sm-4 control-label">Pubmed ID</label>
+   						<div class="col-sm-8">
+     					 <input type="text" class="form-control" name="biosample_name" placeholder="It is necessary" required>
+  						 </div>
+ 					</div>
+ 					<div class="form-group">
+						<label for="inputPassword3" class="col-sm-4 control-label" >Sample ID</label>
+   						<div class="col-sm-8">
+     					 <input type="text" class="form-control" name="pubmed_id" placeholder="Non-essential option">
+  						 </div>
+ 					</div>
+				</div>
+				<div class="alert alert-success" role="alert">
+					<h4><font color='black'>Submitter Information</font></h4>
+					<div class="form-group">
+						<label for="inputPassword3" class="col-sm-4 control-label">Your name</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" name="user_name" placeholder="Non-essential option">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputPassword3" class="col-sm-4 control-label">E-mail</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" name="user_mail" placeholder="It is necessary">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputPassword3" class="col-sm-4 control-label">Organization</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" name="user_mail" placeholder="It is necessary">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputPassword3" class="col-sm-4 control-label">Other Description</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" name="description" placeholder="Non-essential option">
+						</div>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+    				<div class="col-sm-6 col-sm-offset-6">
+      					<button type="Submit" class="btn btn-default" style="background-color: #A5C6B5;"><font color="white" size="3"><strong>Submit</strong></font></button>
+						<button type="Reset" class="btn btn-default" style="background-color: #A5C6B5;"><font color="white" size="3"><strong>Reset</strong></font></button>
+    				</div>
+				</div>
+				</form>
+		</div>
+
+		<div class="col-lg-6">
+
+
+
+
+			<div style="margin-top: 65px" class="alert alert-success">
+				<h1 style="font-size: large">Contact</h1>
+				<div>
+					Guohua Wang, PhD Professor<br />
+					Information and Computer Engineering, Northeast Forestry University<br/>
+					Address: 1030 Chengdong Building, 26 Hexing Road, Xiangfang District, Harbin, Heilongjiang, China , 150040<br />
+					Email: ghwang@nefu.edu.cn<br/>
+					Website: <a href="https://icec.nefu.edu.cn/info/1032/1904.htm">https://icec.nefu.edu.cn/info/1032/1904.htm</a>
+				</div>
+
+			</div>
+
+		</div>
+
+
+
+	</div>
+</div>
+<footer>
+	<div style="display: none"><a href="https://www.xn--by-6y6c831p.cn/"></a></div>
+	<p><a href="/PlantCADB/index">Home</a> | <a href="/PlantCADB/data-browse">Data-Browse</a> | <a href="/PlantCADB/search">Search</a> | <a href="/PlantCADB/Analysis">Analysis</a>  |  <a href="/PlantCADB/Genome-Browser">Genome-Browser</a> | <a href="/PlantCADB/download">Download</a> | <a href="/PlantCADB/submit">Submit</a> | <a href="/PlantCADB/help">Help</a></p>
+	<p>Copyright &copy;  Bio Laboratory |黑ICP备19004777号 | 信息系统安全备案23011443037-21002</p>
+</footer>
+<script type="text/javascript" src="/PlantCADB/lib/jquery-3.6.0.js"></script>
+<script src="/PlantCADB/js/bootstrap.min.js"></script>
+</body>
+</html>

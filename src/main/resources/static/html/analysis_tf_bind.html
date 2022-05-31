@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>PlantCADB-Plant Chromatin Accessibility Database</title>
+    <link rel="icon" type="image/x-icon" href="/PlantCADB/image/favicon.ico">
+
+    <link href="/PlantCADB/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/PlantCADB/lib/bootstrap-table.min.css">
+    <link href="/PlantCADB/css/fontawesome.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="/PlantCADB/css/header.css">
+    <link rel="stylesheet" href="/PlantCADB/css/footer.css"/>
+
+
+
+
+
+</head>
+
+<body>
+
+<header>
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/PlantCADB/index"><b style="color:#fff"><i style="color:white">PlantCADB</i></b></a>
+            </div>
+            <div class="navbar-collapse collapse ">
+                <ul class="nav navbar-nav">
+                    <li ><a href="/PlantCADB/index">Home</a></li>
+                    <li><a href="/PlantCADB/data-browse">Data-Browse</a></li>
+                    <li><a href="/PlantCADB/search">Search</a></li>
+                    <li class="active"><a href="/PlantCADB/Analysis">Analysis</a></li>
+                    <li><a href="/PlantCADB/Genome-Browser">Genome-Browser</a></li>
+                    <li><a href="/PlantCADB/download">Download</a></li>
+                    <li><a href="/PlantCADB/submit">Submit</a></li>
+                    <li><a href="/PlantCADB/help">Help</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+    
+    
+<div class="container">
+
+
+
+
+<!--------overview start-------->
+  <div class="row">
+    <div class="col-lg-12">
+      <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> TF Overview</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+
+      <div class="panel panel-success">
+        <div class="panel-heading"> 
+          <div class="panel-tittle">
+          </div>
+        </div>
+        <div class="panel-body">
+            <div class="col-lg-6">
+            <table class="table table-hover" >
+              
+               <thead>
+                <th><h4 style="margin-bottom: 0px;">TF Infomation</h4></th>
+                <th><h4 style="margin-bottom: 0px;"><span class="label label-success">TF 1</span></h4></th>
+                <th><h4 style="margin-bottom: 0px;"><span class="label label-warning">TF 2</span></h4></th>
+              </thead>
+              <tbody>
+              <tr style="color: red">
+                <td width="30%"><strong>TF Name:</strong></td>
+                <td id="OneName"></td>
+                <td id="TwoName"></td>
+              </tr>
+              <tr>
+                <td><strong>TF Family:</strong></td>
+                <td id="Onefamily"></td>
+                <td id="Twofamily"></td>
+              </tr>
+              </tbody>
+            </table>
+            </table>
+            </div>
+             <div class="col-lg-6">
+              <dir style="text-align: center;">
+                <span style="font-size: 120%">Schematic diagram</span>
+                  <img src="/PlantCADB/image/TFanalysis.png" width="100%" height="200px">
+              </dir>
+             </div>
+          </div>
+      </div>
+    </div>
+  </div> 
+<!--------overview 结束-------->
+
+<!--------overlap start-------->
+    <div class="row">
+        <div class="col-lg-12">
+            <hr>
+            <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Overlapping Accessible Chromatin Regions Bound by Two TFs</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <div class="panel-tittle">
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-lg-12">
+                     
+                    <table id="regions_byTFs_table"  class="table table-hover">
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+    </div>
+
+</div>
+
+<footer>
+    <div style="display: none"><a href="https://www.xn--by-6y6c831p.cn/"></a></div>
+    <p><a href="/PlantCADB/index">Home</a> | <a href="/PlantCADB/data-browse">Data-Browse</a> | <a href="/PlantCADB/search">Search</a> | <a href="/PlantCADB/Analysis">Analysis</a>  |  <a href="/PlantCADB/Genome-Browser">Genome-Browser</a> | <a href="/PlantCADB/download">Download</a> | <a href="/PlantCADB/submit">Submit</a> | <a href="/PlantCADB/help">Help</a></p>
+    <p>Copyright &copy;  Bio Laboratory |黑ICP备19004777号 | 信息系统安全备案23011443037-21002</p>
+</footer>
+
+<script type="text/javascript" src="/PlantCADB/lib/jquery-3.6.0.js"></script>
+<script src="/PlantCADB/js/bootstrap.min.js"></script>
+<script src="/PlantCADB/lib/bootstrap-table-all.js"></script>
+<script src="/PlantCADB/lib/echarts.min.js"></script>
+<script type="module" src="/PlantCADB/js/analysis_tf_bind.js"></script>
+<script type="module" src="/PlantCADB/js/api.js"></script>
+</body>
+</html>
+

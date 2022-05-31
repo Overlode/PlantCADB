@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>PlantCADB-Plant Chromatin Accessibility Database</title>
+    <link rel="icon" type="image/x-icon" href="/PlantCADB/image/favicon.ico">
+
+    <link href="/PlantCADB/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/PlantCADB/lib/bootstrap-table.min.css">
+    <link rel="stylesheet" href="/PlantCADB/css/layui.css"/>
+
+    <link rel="stylesheet" href="/PlantCADB/css/header.css">
+    <link rel="stylesheet" href="/PlantCADB/css/footer.css"/>
+
+
+    <style>
+        .box {
+            position: relative;
+            background: #ffffff;
+            border: 1px solid rgba(34,36,38,.15);
+            border-top: 3px solid #c1c1c1;
+            margin-bottom: 20px;
+            -webkit-border-radius: .28571429rem;
+            -moz-border-radius: .28571429rem;
+            border-radius: .28571429rem;
+            width: 100%;
+            box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
+            padding: 6px;
+        }
+        .box:first-child{
+            border-top-color: #951e9f;
+        }
+        .box:first-child+.box{
+            border-top-color: #7d9fd6;
+        }
+        .box:first-child+.box+.box{
+            border-top-color: #7b9c48;
+        }
+        font {
+            font-weight: bold;
+        }
+
+
+
+        .pagination > li > a, .pagination > li > span {
+            /* padding: 6px 12px; */
+            padding: 3px 5px;
+        }
+
+
+
+        div.dataTables_wrapper div.dataTables_filter input {
+            /* width: auto; */
+            width: 100px;
+        }
+
+        /* 元素 | http://39.98.139.1/ATACdb/search/search_sample_result_TF_test.php?threshold=all */
+
+        #frequency_of_TFs_table_filter > label:nth-child(1) {
+            position: relative;
+            top: 5px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+
+
+<header>
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/PlantCADB/index"><b style="color:#fff"><i style="color:white">PlantCADB</i></b></a>
+            </div>
+            <div class="navbar-collapse collapse ">
+                <ul class="nav navbar-nav">
+                    <li ><a href="/PlantCADB/index">Home</a></li>
+                    <li><a href="/PlantCADB/data-browse">Data-Browse</a></li>
+                    <li><a href="/PlantCADB/search">Search</a></li>
+                    <li class="active"><a href="/PlantCADB/Analysis">Analysis</a></li>
+                    <li><a href="/PlantCADB/Genome-Browser">Genome-Browser</a></li>
+                    <li><a href="/PlantCADB/download">Download</a></li>
+                    <li><a href="/PlantCADB/submit">Submit</a></li>
+                    <li><a href="/PlantCADB/help">Help</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <hr>
+            <h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Sample overview</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                </div>
+                <div class="panel-body">
+                    <div class="col-lg-5">
+                        <table class="table table-hover" id="regionTable" style="table-layout: fixed;word-break: break-all">
+                            <tr style=";font-weight:bold;">
+                                <td><strong>Region ID:</strong></td>
+                                <td id="regionID"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Data Type:</strong></td>
+                                <td id="datatype"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Class:</strong></td>
+                                <td id="class"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Layout:</strong></td>
+                                <td id="layout"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Species:</strong></td>
+                                <td id="species"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Description:</strong></td>
+                                <td id="description"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tissue:</strong></td>
+                                <td id="tissue"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Region Number:</strong></td>
+                                <td id="regionNumber"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Region Length:</strong></td>
+                                <td id="regionLength"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Runs:</strong></td>
+                                <td id="Runs"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>TSS enrichment score:</strong></td>
+                                <td id="tss_score"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>FRiP:</strong></td>
+                                <td id="FRiP"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mean insert size:</strong></td>
+                                <td id="Mean_insert_size"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Standard deviation:</strong></td>
+                                <td id="Standard_deviation"></td>
+                            </tr>
+<!--                            <tr>-->
+<!--                                <td><strong>Motif:</strong></td>-->
+<!--                                <td id="motif"></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td><strong>dACR:</strong></td>-->
+<!--                                <td id="dacr"></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td><strong>gACR:</strong></td>-->
+<!--                                <td id="gacr"></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td><strong>pACR:</strong></td>-->
+<!--                                <td id="pacr"></td>-->
+<!--                            </tr>-->
+
+
+                        </table>
+                    </div>
+                    <div class="col-lg-7">
+                        <div style="font-size: large;font-weight: bold;"><center> Accessible regions distribution of chromosome</center></div>
+                        <div id="container" style="height:260px">
+
+                        </div>
+                        <div style="font-size: large;font-weight: bold;"><center> Accessible regions distribution of type</center></div>
+                        <div id="pcr" style="height:260px">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <hr/>
+        <div class="col-lg-5">
+            <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Search result </h2>
+        </div>
+        <div class="col-lg-3 col-md-offset-2">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                </div>
+                <div class="panel-body">
+                    <table id="searchResult" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <hr>
+    <div class="row">
+        <div class="col-lg-8">
+            <h2><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> TF footprint of Sample</h2>
+        </div>
+        <div class="col-lg-4">
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <div class="panel-tittle">
+                    </div>
+                </div>
+
+                <div class="panel-body">
+
+
+                    <div class="container-fluid" style="padding-right: 0px;padding-left: 25px">
+
+                            <div class="row box" style="border-top-color: white">
+                                <div class="col-sm-6 col-lg-12">
+                                    <font >Number of binding sites </font> <font>threshold:</font>
+                                    <div class="btn-group dropleft">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                            <b id="NumThreshHold">none</b>
+                                            <span class="caret"></span>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <!-- Dropdown menu links -->
+                                            <a class="dropdown-item number"  id="-999"> <span>none</span></a><br>
+                                            <a class="dropdown-item number"  id="10">number &gt; <span>10</span></a><br>
+                                            <a class="dropdown-item number"  id="50">number ≥ <span>50</span></a><br>
+                                            <a class="dropdown-item number"  id="100">number ≥ <span>100</span></a><br>
+                                            <a class="dropdown-item number"  id="500">number ≥ <span>500</span></a><br>
+                                            <a class="dropdown-item number"  id="1000">number ≥ <span>1000</span></a><br>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="row box" style="border-top-color: white">
+                                <div class="col-sm-6 col-lg-12">
+                                    <font >Protection score</font> <font>threshold:</font>
+                                    <div class="btn-group">
+
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                            <b id="ProThreshHold">none</b>
+                                            <span class="caret"></span>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item protection"  id="-9999"> <span>none</span></a><br>
+                                            <a class="dropdown-item protection"  id="0">protection score ≥ <span>0</span></a><br>
+                                            <a class="dropdown-item protection"  id="1">protection score ≥ <span>1</span></a><br>
+                                            <a class="dropdown-item protection"  id="2">protection score ≥ <span>2</span></a><br>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row box" style="border-top-color: white">
+                                <div class="col-sm-6 col-lg-12">
+                                    <font >TC </font> <font>threshold:</font>
+                                    <div class="btn-group">
+
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                            <b id="TCThreshHold">none</b>
+                                            <span class="caret"></span>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item TC"  > <span>none</span></a><br>
+                                            <a class="dropdown-item TC"  >TC ≥ <span>0</span></a><br>
+                                            <a class="dropdown-item TC" >TC ≥ <span>1</span></a><br>
+                                            <a class="dropdown-item TC" >TC ≥ <span>2</span></a><br>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        <div class="row box">
+                            <div class="col-lg-12">
+                                <div style="
+                                text-align: center;font-size: 150%">Footprint statistics</div>
+
+                                <div >
+
+                                    <table id="footprint_table" class="table " cellspacing="0" style="font-size: 93%" >
+                                </table>
+
+
+                                </div>
+                            </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+        <!-----图片放大----->
+        <div id="outerdiv" style="position:fixed;top:0;left:0;background:rgba(0,0,0,0.7);z-index:2;width:100%;height:100%;display:none;">
+            <div id="innerdiv" style="position:absolute;">
+                <img id="bigimg" style="border:5px solid #fff;" src=""/>
+            </div>
+        </div>
+
+
+
+
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <hr>
+            <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Peak annotation visualization of Sample
+                </h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-success">
+                <div class="panel-heading ">
+                    <div class="panel-tittle ">
+                    </div>
+                </div>
+
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-md-7">
+                        <div class="col-md-6">
+                            <center><h4><span><strong>Plot A</strong></span></h4></center>
+                            <div class="thumbnail">
+                                <img id="tssEnrichment" title="Click on me !" class="pic" style="cursor:pointer;" onclick='picLayer(this)'/>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <center><h4><span><strong>Plot B</strong></span></h4></center>
+                            <div class="thumbnail" >
+                                <img id="annotatedGenomic" margin-top="100px"title="Click on me !" class="pic"  style="cursor:pointer;" onclick='picLayer(this)'/>
+                            </div>
+                        </div>
+                            <div class="col-md-6">
+                                <center><h4><span><strong>Plot C</strong></span></h4></center>
+                                <div class="thumbnail" >
+                                    <img id="combinationChart" margin-top="100px"title="Click on me !" class="pic"  style="cursor:pointer;" onclick='picLayer(this)'/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <center><h4><span><strong>Plot D</strong></span></h4></center>
+                                <div class="thumbnail" >
+                                    <img id="peakContribution" margin-top="100px"title="Click on me !" class="pic"  style="cursor:pointer;" onclick='picLayer(this)'/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+
+
+                            <table class="table table-hover " style="margin-top:20px">
+                                <tr >
+                                    <td><strong>Plot A:</strong> A heatmap of peaks binding to TSS region(±1kb).</td>
+
+                                </tr>
+
+                                <tr >
+                                    <td><strong>Plot B:</strong> A pie chart of annotated genomic features(the proportion of Promoter, 5'UTR, 3'UTR, Exon, Intron, Downstream and Intergenic).</td>
+
+                                </tr>
+
+                            </table>
+
+                            <br><br><br><br><br><br><br><br><br>
+
+                            <table class="table table-hover " style="margin-top:70px">
+                                <tr >
+                                    <td><strong>Plot C:</strong> A combination chart, including vennpie and upsetplot.</td>
+
+                                </tr>
+                                <tr >
+                                    <td><strong>Plot D:</strong> A covplot of peak on chromosomes(Only the appropriate number of chromosomes have been mapped.)</td>
+
+                                </tr>
+                            </table>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</div>
+</div>
+<footer>
+    <div style="display: none"><a href="https://www.xn--by-6y6c831p.cn/"></a></div>
+    <p><a href="/PlantCADB/index">Home</a> | <a href="/PlantCADB/data-browse">Data-Browse</a> | <a href="/PlantCADB/search">Search</a> | <a href="/PlantCADB/Analysis">Analysis</a>  |  <a href="/PlantCADB/Genome-Browser">Genome-Browser</a> | <a href="/PlantCADB/download">Download</a> | <a href="/PlantCADB/submit">Submit</a> | <a href="/PlantCADB/help">Help</a></p>
+    <p>Copyright &copy;  Bio Laboratory |黑ICP备19004777号 | 信息系统安全备案23011443037-21002</p>
+</footer>
+
+<script type="text/javascript" src="/PlantCADB/lib/jquery-3.6.0.js"></script>
+<script src="/PlantCADB/js/bootstrap.min.js"></script>
+<script type="module" src="/PlantCADB/js/analysis_gene_cell.js"></script>
+<script type="module"  src="/PlantCADB/js/api.js"></script>
+<script src="/PlantCADB/lib/bootstrap-table-all.js"></script>
+<script src="/PlantCADB/lib/echarts.min.js"></script>
+<script src="/PlantCADB/layui.js"></script>
+<script src="/PlantCADB/lib/popper.min.js"></script>
+<script>
+    function picLayerShow(obj){
+        var picsrc = $(obj).attr("src");
+        layer.open({
+            type: 2,
+            title: false,
+            area: ['630px', '360px'],
+            shade: 0.8,
+            closeBtn: 0,
+            shadeClose: true,
+            content: picsrc
+        });
+    }
+    function picLayer(obj){
+        var picsrc = $(obj).attr("src");
+        layer.open({
+            type: 2,
+            title: false,
+            area: ['1200px', '700px'],
+            shade: 0.8,
+            closeBtn: 0,
+            shadeClose: true,
+            content: picsrc
+        });
+    }
+</script>
+</body>
+</html>

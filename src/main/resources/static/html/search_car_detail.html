@@ -1,0 +1,305 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PlantCADB-Plant Chromatin Accessibility Database</title>
+    <link rel="icon" type="image/x-icon" href="/PlantCADB/image/favicon.ico">
+    <link href="/PlantCADB/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/PlantCADB/lib/bootstrap-table.min.css">
+    <link href="/PlantCADB/lib/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/PlantCADB/css/header.css">
+    <link rel="stylesheet" href="/PlantCADB/css/footer.css"/>
+
+
+
+</head>
+
+<body>
+
+<header>
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/PlantCADB/index"><b style="color:#fff"><i style="color:white">PlantCADB</i></b></a>
+            </div>
+            <div class="navbar-collapse collapse ">
+                <ul class="nav navbar-nav">
+                    <li><a href="/PlantCADB/index">Home</a></li>
+                    <li><a href="/PlantCADB/data-browse">Data-Browse</a></li>
+                    <li class="active"><a href="/PlantCADB/search">Search</a></li>
+                    <!--  <li>
+                          <a href="#" data-toggle="dropdown">Analysis<b class="caret"></b></a>
+                          <ul class="dropdown-menu" style="background-color:#f0f0f0;">
+                              <li><a href="../analysis_gene">GENE-SE Analysis</a></li>
+                              <li><a href="../analysis_snp">SNP-SE Analysis</a></li>
+                              <li><a href="../analysis_overlap">Overlap Analysis</a></li>
+                          </ul>
+                      </li>-->
+                    <li><a href="/PlantCADB/Analysis">Analysis</a></li>
+                    <li><a href="/PlantCADB/Genome-Browser">Genome-Browser</a></li>
+                    <li><a href="/PlantCADB/download">Download</a></li>
+<!--                    <li><a href="../statistics">Statistics</a></li>-->
+                    <li><a href="/PlantCADB/submit">Submit</a></li>
+                    <li><a href="/PlantCADB/help">Help</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+
+
+
+
+    <!--------overview start-------->
+    <div class="row">
+        <div class="col-lg-12">
+            <h2><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Region Overview</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <div class="panel-tittle">
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="col-lg-6" >
+                        <table class="table table-hover" style="margin-top: 20px">
+                            <tr style="color: red;font-weight:bold;">
+                                <td width="40%"><strong>Region ID:</strong></td>
+                                <td id="atacID"></td>
+                            </tr>
+                            <tr >
+                                <td><strong>Chr:</strong></td>
+                                <td id="atacChr"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Start:</strong></td>
+                                <td id="atacStart"></td>
+                            </tr>
+                            <tr >
+                                <td><strong>End:</strong></td>
+                                <td id="atacEnd"><strong></strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Length:</strong></td>
+                                <td id="atacLength"></td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>abs_summit:</strong></td>
+                                <td id="atacAbs_summit"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>pileup</strong></td>
+                                <td id="atacPileup"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>-Log<sub>10</sub>Pvalue:</strong></td>
+                                <td id="atacPvalue"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>fold_enrichment</strong></td>
+                                <td id="atacFold_enrichment"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>-Log<sub>10</sub>Qvalue:</strong></td>
+                                <td id="atacQvalue"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Type:</strong></td>
+                                <td id="type"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-lg-6">
+                        <div style="font-size: 120%;margin-bottom: 10px"> <strong><center>Accessible Chromatin Region Associated Network</center></strong></div>
+                        <div style="height: 400px" id="region_overview_view"></div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------overview 结束-------->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <hr>
+            <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Accessible chromatin region associated SNP</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <div class="panel-tittle"></div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="col-lg-12">
+                        <table id="snp_table"  class="table table-hover table-bordered table-condensed" cellspacing="0" width="100%" ></table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--------结果表格 start-------->
+    <div class="row">
+        <div class="col-lg-12">
+            <hr>
+            <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> TF Footprint Analysis </h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <div class="panel-tittle"></div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="col-lg-12">
+                       <table id="footprint_table"  class="table table-hover table-bordered table-condensed" cellspacing="0" width="100%" ></table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------结果表格 end-------->
+
+    <!--------fimo start-------->
+	 <hr>
+    <div class="row">
+        <div class="col-lg-8">
+
+            <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Motif Analysis</h2>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <div class="panel-tittle">
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="panel-body">
+                        <div class="col-lg-12">
+                            <table id="motif_table"  class="table table-hover table-bordered table-condensed" cellspacing="0" width="100%" ></table>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------fimo 结束-------->
+
+
+    <!--------关系基因 start-------->
+    <div class="row">
+        <div class="col-lg-12">
+            <hr>
+            <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Accessible chromatin region associated gene</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <div class="panel-tittle">
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="col-lg-5">
+                        <table class="table table-hover" width="100%" style="table-layout: fixed;word-break: break-all" >
+                            <thead>
+                            <tr>
+                                <th>Strategies/Algorithm</th>
+                                <th>Gene name</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Overlap Gene</td>
+                                <td id="overlapGene"></td>
+                            </tr>
+                            <tr>
+                                <td>Proximal_Gene_1kb</td>
+                                <td id="Proximal_Gene_1kb"></td>
+                            </tr>
+                            <tr>
+                                <td>Proximal_Gene_10kb</td>
+                                <td id="Proximal_Gene_10kb"></td>
+                            </tr>
+                            <tr>
+                                <td>Proximal_Gene_20kb</td>
+                                <td id="Proximal_Gene_20kb"></td>
+                            </tr>
+                            <tr>
+                                <td>Closest Gene</td>
+                                <td id="ClosestGene"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="col-lg-12" id="view" style="height: 300px;"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!--------关系基因 结束-------->
+
+</div>
+
+
+<footer>
+    <div style="display: none"><a href="https://www.xn--by-6y6c831p.cn/"></a></div>
+    <p><a href="/PlantCADB/index">Home</a> | <a href="/PlantCADB/data-browse">Data-Browse</a> | <a href="/PlantCADB/search">Search</a> | <a href="/PlantCADB/Analysis">Analysis</a>  |  <a href="/PlantCADB/Genome-Browser">Genome-Browser</a> | <a href="/PlantCADB/download">Download</a> | <a href="/PlantCADB/submit">Submit</a> | <a href="/PlantCADB/help">Help</a></p>
+    <p>Copyright &copy;  Bio Laboratory |黑ICP备19004777号 | 信息系统安全备案23011443037-21002</p>
+</footer>
+
+<script type="text/javascript" src="/PlantCADB/lib/jquery-3.6.0.js"></script>
+<script src="/PlantCADB/lib/bootstrap-table-all.js"></script>
+<script src="/PlantCADB/js/bootstrap.min.js"></script>
+<script src="/PlantCADB/lib/echarts.min.js"></script>
+<script type="module" src="/PlantCADB/js/search_atac.js"></script>
+<script type="module" src="/PlantCADB/js/api.js"></script>
+</body>
+</html>
+

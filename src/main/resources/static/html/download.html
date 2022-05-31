@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PlantCADB-Plant Chromatin Accessibility Database</title>
+	<link rel="icon" type="image/x-icon" href="/PlantCADB/image/favicon.ico">
+
+	<link href="/PlantCADB/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="/PlantCADB/lib/bootstrap-table.min.css">
+
+	<link rel="stylesheet" href="/PlantCADB/css/header.css">
+	<link rel="stylesheet" href="/PlantCADB/css/footer.css"/>
+
+
+	<style type="text/css">
+			.bottom{margin-top:12px;}
+			.dataTables_filter{margin-top:8px;}
+			.dataTables_length{margin-top:8px;}
+	</style>
+</head>
+<body>
+  
+<header>
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+				<a class="navbar-brand" href="/PlantCADB/index"><b style="color:#fff"><i style="color:white">PlantCADB</i></b></a>
+            </div>
+            <div class="navbar-collapse collapse ">
+                <ul class="nav navbar-nav">
+                    <li><a href="/PlantCADB/index">Home</a></li>
+                    <li><a href="/PlantCADB/data-browse">Data-Browse</a></li>
+                    <li><a href="/PlantCADB/search">Search</a></li>
+					<li><a href="/PlantCADB/Analysis">Analysis</a></li>
+                    <li><a href="/PlantCADB/Genome-Browser">Genome-Browser</a></li>
+                    <li class="active"><a href="/PlantCADB/download">Download</a></li>
+<!--                    <li><a href="statistics.html">Statistics</a></li>-->
+                    <li><a href="/PlantCADB/submit">Submit</a></li>
+                    <li><a href="/PlantCADB/help">Help</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div style="font-size: 350%;margin-top: 3%">Download</div>
+			<hr/>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-12">
+		<h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Download for Each Sample</h2>
+						<table id="downloadTable" class="table table-hover" cellspacing="0" width="100%">
+						</table>				
+			</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-12">
+			<hr/>
+			<h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Package of All</h2>
+				<table class="table table-hover" id="totalDownload">
+					<tr>
+						<td><strong>Accessible Chromatin Region:</strong></td>
+						<td>.tar.gz<a href="https://bioinfor.nefu.edu.cn/PlantCADB/getData/downloadData?sampleId=001&type=4&typeFlag=0">&nbsp<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a></td>
+
+					</tr>
+					<tr>
+						<td><strong>Associated Genes:</strong></td>
+						<td>.tar.gz<a href="https://bioinfor.nefu.edu.cn/PlantCADB/getData/downloadData?sampleId=001&type=4&typeFlag=1">&nbsp<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a></td>
+
+					</tr>
+
+					<tr>
+						<td><strong>TF Footprint:</strong></td>
+						<td>.tar.gz<a href="https://bioinfor.nefu.edu.cn/PlantCADB/getData/downloadData?sampleId=001&type=4&typeFlag=2">&nbsp<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a></td>
+
+					</tr>
+
+				</table>
+		</div>	
+	</div>
+
+
+	<div class="row">
+		<div class="col-lg-12">
+			<hr/>
+			<h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Sources of Annotation Information</h2>
+				<table class="table table-hover" >
+					<tr>
+						<td><strong>TF/Motif:</strong></td>
+						<td><a href="http://planttfdb.gao-lab.org/">PlantTFDB</a></td>
+					</tr>
+
+					<tr>
+						<td><strong>Genome reference/Gene annotation:</strong></td>
+						<td><a href="http://plants.ensembl.org/index.html">Ensembl Plant</a>,&nbsp;<a href="https://www.ncbi.nlm.nih.gov/genome">NCBI Genome</a></td>
+					</tr>
+				</table>
+				
+			
+		</div>	
+	</div>
+
+
+
+</div>
+
+
+<footer>
+	<div style="display: none"><a href="https://www.xn--by-6y6c831p.cn/"></a></div>
+	<p><a href="/PlantCADB/index">Home</a> | <a href="/PlantCADB/data-browse">Data-Browse</a> | <a href="/PlantCADB/search">Search</a> | <a href="/PlantCADB/Analysis">Analysis</a>  |  <a href="/PlantCADB/Genome-Browser">Genome-Browser</a> | <a href="/PlantCADB/download">Download</a> | <a href="/PlantCADB/submit">Submit</a> | <a href="/PlantCADB/help">Help</a></p>
+	<p>Copyright &copy;  Bio Laboratory |黑ICP备19004777号 | 信息系统安全备案23011443037-21002</p>
+</footer>
+<script type="text/javascript" src="/PlantCADB/lib/jquery-3.6.0.js"></script>
+<script src="/PlantCADB/js/bootstrap.min.js"></script>
+<script src="/PlantCADB/lib/bootstrap-table-all.js"></script>
+<script type="module" src="/PlantCADB/js/download.js"></script>
+<script type="module" src = "/PlantCADB/js/api.js"></script>
+</body>
+</html>

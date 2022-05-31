@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no"> 
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+
+	<title>PlantCADB-Plant Chromatin Accessibility Database</title>
+	<link rel="icon" type="image/x-icon" href="/PlantCADB/image/favicon.ico">
+
+	<link href="/PlantCADB/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="/PlantCADB/css/header.css">
+	<link rel="stylesheet" href="/PlantCADB/css/footer.css"/>
+
+
+
+
+</head>
+<body>
+  
+<header>
+
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+				<a class="navbar-brand" href="/PlantCADB/index"><b style="color:#fff"><i style="color:white">PlantCADB</i></b></a>
+            </div>
+            <div class="navbar-collapse collapse ">
+                <ul class="nav navbar-nav">
+                    <li><a href="/PlantCADB/index">Home</a></li>
+                    <li><a href="/PlantCADB/data-browse">Data-Browse</a></li>
+                    <li><a href="/PlantCADB/search">Search</a></li>
+					<li><a href="/PlantCADB/Analysis">Analysis</a></li>
+                    <li><a href="/PlantCADB/Genome-Browser">Genome-Browser</a></li>
+                    <li><a href="/PlantCADB/download">Download</a></li>
+                    <li><a href="/PlantCADB/submit">Submit</a></li>
+                    <li class="active"><a href="/PlantCADB/help">Help</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="container">
+
+	<hr>
+
+	<div class="row" >
+
+		<div class="col-lg-12" style="margin-bottom: 120px">
+
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion"
+						   href="#collapseOne">
+							<h4>What does the PlantCADB do?</h4>
+						</a>
+					</h4>
+				</div>
+				<div id="collapseOne" class="panel-collapse collapse">
+					<div class="panel-body">
+						<h4>The current version of PlantCADB allows users to:</h4>
+						(1) Query the chromatin accessibility area of 37 plant species, and obtain the detailed data source and its description.<br/>
+						(2) Obtain the distribution of sample chromatin accessibility regions on each chromosome, TSS Enrichment, and detailed genome annotations, including the distribution of accessibility regions in 3'UTR, 5'UTR, promoter, exon, intron, distal Intergenic, etc.<br>
+						(3) Aquire the relevant genes, motif enrichment and transcription binding sites of each chromatin accessibility region annotations of each sample.<br/>
+						(4) Download the results of chromatin accessibility regions, associated genes, and footprint analysis result.<br/>
+						(5) Submit newly published information of chromatin accessibility datasets to enrich our database.<br/>
+
+
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion"
+						   href="#collapseTwo">
+							<h4>Browsing data?</h4>
+						</a>
+					</h4>
+				</div>
+				<div id="collapseTwo" class="panel-collapse collapse">
+					<div class="panel-body">
+						<h4><a href="/PlantCADB/index">Home</a></h4>page
+						Users can clearly understand the function of the database and detailed statistics. In current version of PlantCADB reported a total of 18,065,954 accessible chromatin regions from more than 600 samples. We manually collected data related to chromatin accessibility of four types of ATAC-seq(302), DNase-seq(317), FAIRE-seq(15) and MNase-seq(4) from GEO and SRA databases, a total of 37 plant species, which committed to integrating and analyzing chromatin accessibility data of all available on plant species.
+						<h4><a href="/PlantCADB/data-browse">Data-Browse</a></h4>page
+						Users can select multiple filter criteria to query the data they are interested in, and each sample is followed by a brief description of the data.To view the chromatin accessibility area of the specified sample, the user simply clicks “Sample ID” to view it.We have named different data types differently, ATAC-seq as ”Sample_00”, DNase-seq as ”Sample_01”, FAIRE-seq as ”Sample_02” and MNase-seq as ”Sample_03”.
+						<br><br>
+						<img src="/PlantCADB/image/dataBorwse.png" width="100%">
+						<br><br>
+						<h4><a href="/PlantCADB/Analysis">Sample detailed</a></h4>page
+						Users can obtain detailed information about samples of interest, including sample overview, chromosome number pie chart of chromatin accessibility regions distribution, search result table, TF footprint annotation and peak annotation visualization.
+						PlantCADB used HINT footprint analysis based on Hidden Markov Model (HMM) to obtain the analysis result of TF footprint. Because ATAC-seq data and DNase-seq data have different degrees of bias during the experiment, different protocols are used for different types of data, ATAC-seq data is based on ATAC-seq model, DNase-seq data is based on DNase- seq model. The result files we got include TFs with the Tag Count (TC), protection score, number of binding sites and footprint logo were identified for each sample.
+						PlantCADB uses CHIPseeker to realize the visualization function of peak mark. We support displaying chromatin accessibility areas in different ways, including profiles of peaks binding to TSS region, peaks coverage over chromosomes and Peak distribution map on chromosomes.
+						<br><br>
+						<img src="/PlantCADB/image/sampleOverview.png" width="100%">
+						<br><br>
+						<img src="/PlantCADB/image/sample.png" width="100%">
+						<br><br>
+						For detail about the accessible chromatin region, we provide more detailed TF footprint corresponding scores, the results of motif scan and associated genes. Motif Scanning includes location information, sequence scores, and matched sequences.We provide five analysis results for related genes, including overlap genes, proximal genes within ±1kb, proximal genes within ±10kb, proximal genes within ±20kb and closet gene.
+						<br><br>
+						<img src="/PlantCADB/image/regionOverview.png" width="100%">
+						<br><br>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion"
+						   href="#collapseThree">
+							<h4>Search data?</h4>
+						</a>
+					</h4>
+				</div>
+				<div id="collapseThree" class="panel-collapse collapse">
+					<div class="panel-body">
+						Users can query the data in which they are interested in three ways, through TF, gene or a region.
+						<h4><a href="/PlantCADB/search">Search by TF</a>: </h4>
+						Users can submit a TF name for query after selecting species, then PlantCADB can provide you the Sample ID and sequence that binds to the TF. PlantCADB used two methods to identify transcription factor binding sites, one is footprint analysis, and the other is motif scanning analysis. Among them, we only analyze the footprints of ATAC-seq and DNase-seq data. As some species currently do not have motif or gene annotation files, we will supplement the information of the database timely in the future.
+						<br><br>
+						<img src="/PlantCADB/image/searchByTF.png" width="100%">
+						<br><br>
+						<img src="/PlantCADB/image/TFoverview.png" width="100%">
+
+						<h4><a href="/PlantCADB/search">Search by gene</a>: </h4>
+						Users can submit a gene name for query after selecting species and strategies, then PlantCADB can provide you a series of information such as region ID.
+						<br><br>
+						<img src="/PlantCADB/image/searchByGene.png" width="100%">
+						<br><br>
+						<img src="/PlantCADB/image/geneOverview.png" width="100%">
+						<h4><a href="/PlantCADB/search">Search by genome region</a>:</h4>
+						Users can submit a region for query after selecting species and Sample ID, then PlantCADB can provide you a series of regions within it. Regions information include species, sample_ID, chromosome, start position and end position.						<br><br>
+						<br><br>
+						<img src="/PlantCADB/image/searchByRegion.png" width="100%">
+						<br><br><br>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion"
+						   href="#collapseFive">
+							<h4>Analysis data?</h4>
+						</a>
+					</h4>
+				</div>
+				<div id="collapseFive" class="panel-collapse collapse">
+					<div class="panel-body">
+						PlantCADB provides two tools for data analysis.
+						<h4>The first is the <a href="/PlantCADB/Analysis">difference-overlap analysis of the chromatin accessibility area</a>. </h4>
+						Users can submit the "biological sample name" of interest. PlantCADB analyzes the difference between the two samples and overlaps the accessible chromatin area.
+						<br><br>
+						<img src="/PlantCADB/image/analysisRegion.png" width="100%">
+						<br><br>
+						<img src="/PlantCADB/image/analysisRegionResult.png" width="100%">
+						<h4>The second is the <a href="/PlantCADB/Analysis">overlap analysis of accessible chromatin regions bound by two TFs</a>. </h4>
+						Users can submit the name of the TF of interest and extend the window length of the two TF binding sites. PlantCADB will analyze the overlapping accessible chromatin regions bound by the two TFs.
+						<br><br>
+						<img src="/PlantCADB/image/analysisTF.png" width="100%">
+						<br><br>
+						<img src="/PlantCADB/image/analysisTFresult.png" width="100%">
+						<br><br><br>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion"
+						   href="#collapseSix">
+							<h4>Visualizing data?</h4>
+						</a>
+					</h4>
+				</div>
+				<div id="collapseSix" class="panel-collapse collapse">
+					<div class="panel-body">
+						In <a href="/PlantCADB/Genome-Browser">Genome-Browser</a> page, we showed the chromatin accessibility regions and gene annotations of 33 species using JBrowser. Users can further visualize the data they are interested in on this page. Gene annotation includes other detailed information such as nearby genes, miRNA, tRNA, lncRNA, etc.
+						<br><br>
+						<img src="/PlantCADB/image/jbrowser.png" width="100%">
+						<br><br><br>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion"
+						   href="#collapseSeven">
+							<h4>Downloading data?</h4>
+						</a>
+					</h4>
+				</div>
+				<div id="collapseSeven" class="panel-collapse collapse">
+					<div class="panel-body">
+						The "<a href="/PlantCADB/download">Download</a>" page provides chromatin accessibility regions, associated gene annotations, motif scanning, and footprint analysis results data for all samples for download to users. PlantCADB supports the download of .bed format, .csv format, .txt format and .pdf format.
+						<br><br>
+						<img src="/PlantCADB/image/download.png" width="100%">
+					</div>
+				</div>
+			</div>
+
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion"
+						   href="#collapseFour">
+							<h4>Development Environment?</h4>
+						</a>
+					</h4>
+				</div>
+				<div id="collapseFour" class="panel-collapse collapse">
+					<div class="panel-body">
+						Plantcadb was developed using <a href="https://www.oracle.com/java/">Java 8</a> and <a href="https://html.spec.whatwg.org/multipage/">HTML 5</a> , finally runs on a Linux-based <a href="http://www.apache.org">Apache Web server </a>.  The website framework adopts <a href="https://v3.bootcss.com">Bootstrap v3.3.7 </a>to design and construction, <a href="https://echarts.apache.org">Ecarts v3.7.0</a> for data visualization, <a href="https://jquery.com">JQuey v3.6.0</a> for front-background data interaction, and <a href="https://jbrowse.org">JBrowse2 </a>browser framework for genome browser. Website can support any browser access to use.  					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<footer>
+	<div style="display: none"><a href="https://www.xn--by-6y6c831p.cn/"></a></div>
+	<p><a href="/PlantCADB/index">Home</a> | <a href="/PlantCADB/data-browse">Data-Browse</a> | <a href="/PlantCADB/search">Search</a> | <a href="/PlantCADB/Analysis">Analysis</a>  |  <a href="/PlantCADB/Genome-Browser">Genome-Browser</a> | <a href="/PlantCADB/download">Download</a> | <a href="/PlantCADB/submit">Submit</a> | <a href="/PlantCADB/help">Help</a></p>
+	<p>Copyright &copy;  Bio Laboratory |黑ICP备19004777号 | 信息系统安全备案23011443037-21002</p>
+</footer>
+
+<script type="text/javascript" src="/PlantCADB/lib/jquery-3.6.0.js"></script>
+<script src="/PlantCADB/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>PlantCADB-Plant Chromatin Accessibility Database</title>
+	<link rel="icon" type="image/x-icon" href="/PlantCADB/image/favicon.ico">
+
+	<link href="/PlantCADB/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="/PlantCADB/css/header.css" >
+	<link rel="stylesheet" href="/PlantCADB/css/footer.css"/>
+
+
+
+    <style type="text/css">
+
+
+.carousel-control.left {
+
+  background-image:none;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+}
+.carousel-control.right {
+  left: auto;
+  right: 0;
+
+  background-image:none;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+}
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+				<a class="navbar-brand" href="/PlantCADB/index"><b style="color:#fff"><i style="color:#fff ">PlantCADB</i></b></a>
+            </div>
+            <div class="navbar-collapse collapse ">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/PlantCADB/index">Home</a></li>
+                    <li><a href="/PlantCADB/data-browse">Data-Browse</a></li>
+                    <li><a href="/PlantCADB/search">Search</a></li>
+					<li><a href="/PlantCADB/Analysis">Analysis</a></li>
+                    <li><a href="/PlantCADB/Genome-Browser">Genome-Browser</a></li>
+                    <li><a href="/PlantCADB/download">Download</a></li>
+<!--                    <li><a href="statistics.html">Statistics</a></li>-->
+                    <li><a href="/PlantCADB/submit">Submit</a></li>
+                    <li><a href="/PlantCADB/help">Help</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+	<div class="row">
+		<div class="col-lg-6">
+			<center>
+				<p style="margin-top: 40px"><span style="color :#258A96;font-size: 450%">PlantCA</span><span style="font-size: 450%">DB</span><span style="font-size: 200%"><!--V1.04--></span></p>
+				<p style="font-size: 155%">Plant Chromatin Accessibility Database</p>
+			</center>
+				<br>
+						<div id="myCarousel" class="carousel slide" style="margin-top: 0px" data-ride="carousel" data-interval="2000">
+						<!-- 轮播（Carousel）指标 -->
+							<ol class="carousel-indicators">
+								<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+								<li data-target="#myCarousel" data-slide-to="1"></li>
+								<li data-target="#myCarousel" data-slide-to="2"></li>
+								<li data-target="#myCarousel" data-slide-to="3"></li>
+								<li data-target="#myCarousel" data-slide-to="4"></li>
+							</ol>
+							<!-- 轮播（Carousel）项目 -->
+							<div class="carousel-inner">
+								<div class="item active" style="height: 300px">
+									<img src="/PlantCADB/image/phylogenyTree.png" alt="First slide"  >
+								</div>
+								<div class="item" style="height: 300px">
+									<img src="/PlantCADB/image/pipline.png" alt="Second slide"  >
+								</div>
+								<div class="item" style="height:  300px">
+									<img src="/PlantCADB/image/technology.png" alt="Three slide"  >
+								</div>
+								<div class="item" style="height:  300px">
+									<img src="/PlantCADB/image/carouselSampleView.png" alt="Four slide"  >
+								</div>
+								<div class="item" style="height:  300px">
+									<img src="/PlantCADB/image/carouselEcharts.png" alt="Five slide"  >
+								</div>
+							</div>
+							<!-- 轮播（Carousel）导航 -->
+							<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+								<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+								<span class="sr-only">Previous</span>
+							</a>
+							<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+								<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+								<span class="sr-only">Next</span>
+							</a>
+						</div>
+		</div>
+		<div  style="height:  580px" class="col-lg-6";>
+			<div style="text-align:justify;font-size: 125%;margin-top: 30px">
+				<div align="center"><h2>What is PlantCADB?</h2></div>
+				<p style="margin-top: 20px">
+					<span>Chromatin accessibility landscapes</span> are essential to detecting regulatory elements, illustrating the corresponding regulatory networks and, ultimately, understanding genetic bases underlying key biological processes.<br>
+					Here, we developed a comprehensive <span>plant chromatin accessibility database (PlantCADB, https://bioinfor.nefu.edu.cn/PlantCADB/)</span> to advance the understanding of molecular networks regulating plant development, physiology and stress adaptation. It contains <span>18,339,426 accessible chromatin regions (ACRs)</span> from <span>more than 600 samples of 37 species</span>. These ACRs were annotated with <span>genomic information, associated genes, transcription factors footprint, motif and SNPs</span>. Additionally, PlantCADB provides various tools to visualize ACRs and corresponding annotations. It thus forms an integrated, annotated and analyzed plant-related chromatin accessibility information which can aid to better understand genetic regulation networks underlying development, important traits, stress adaptions and evolutions.
+				</p>
+				<br/><br/>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<hr/>
+		<div class="col-lg-12">
+			<div style="font-size: large;font-weight: bold; color: darkgray"><center> Statistics</center></div>
+			<center><hr></center>
+			<center>
+				<table id="demo" width="100%" style="border: 1px  gray ;text-align:center;font-size: 100%" cellspadding="5" cellspacing="0">
+					<thead>
+					<tr class="thead-tr" id="formHead">
+						<th rowspan="2" style="text-align: center;font-size: medium">Type</th>
+						<th rowspan="2" style="text-align: center;font-size: medium">Species</th>
+					</tr>
+					</thead>
+					<tbody id = "indexForm">
+					<tr>
+						<td class="植物分类"></td>
+						<td class="TRspecies" ></td>
+						<td class="ATAC-seq"  style="text-align: center;font-size: medium"><strong>GEO</strong></td>
+						<td class="ATAC-seq"  style="text-align: center;font-size: medium"><strong>SRA</strong></td>
+						<td class="DNase-seq"  style="text-align: center;font-size: medium"><strong>GEO</strong></td>
+						<td class="DNase-seq"  style="text-align: center;font-size: medium"><strong>SRA</strong></td>
+						<td class="FAIRE-seq"  style="text-align: center;font-size: medium"><strong>GEO</strong></td>
+						<td class="FAIRE-seq"  style="text-align: center;font-size: medium"><strong>SRA</strong></td>
+						<td class="MNase-seq"  style="text-align: center;font-size: medium"><strong>GEO</strong></td>
+						<td class="MNase-seq"  style="text-align: center;font-size: medium"><strong>SRA</strong></td>
+					</tr>
+					</tbody>
+				</table>
+				<hr/>
+			</center>
+		</div>
+
+
+	</div>
+	<div  class="row">
+		<hr/>
+		<div class="col-lg-12">
+			<div class="col-lg-4">
+				<div style="font-size: large;font-weight: bold; color: darkgray"><center> Data Type</center></div>
+				<center><hr width="90%"></center>
+				<div id="DataType" style="height:450px"></div>
+			</div>
+
+			<div class="col-lg-4">
+				<div style="font-size: large;font-weight: bold; color: darkgray"><center> Tissue Type</center></div>
+				<center><hr width="90%"></center>
+				<div id="TissueType" style="height:480px"></div>
+			</div>
+
+			<div class="col-lg-4">
+				<div style="font-size: large;font-weight: bold; color: darkgray"><center> Species </center></div>
+				<center><hr width="80%"></center>
+				<div id="SpeciesType" style="height:480px"></div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div>
+		<hr/>
+	</div>
+
+</div>
+
+
+
+<!-- cookie提示 -->
+<script language="javascript" type="text/javascript">
+	window.onload=function()
+	{
+	if(!(document.cookie || navigator.cookieEnabled))
+	{
+	alert('cookie is not open!!!!! Please set cookies in the browser to be on.');
+	}
+	};
+</script>
+
+<!-- 首页柱状图 -->
+
+
+<footer>
+	<div style="display: none"><a href="https://www.xn--by-6y6c831p.cn/"></a></div>
+	<p><a href="/PlantCADB/index">Home</a> | <a href="/PlantCADB/data-browse">Data-Browse</a> | <a href="/PlantCADB/search">Search</a> | <a href="/PlantCADB/Analysis">Analysis</a>  |  <a href="/PlantCADB/Genome-Browser">Genome-Browser</a> | <a href="/PlantCADB/download">Download</a> | <a href="/PlantCADB/submit">Submit</a> | <a href="/PlantCADB/help">Help</a></p>
+	<p>Copyright &copy;  Bio Laboratory |黑ICP备19004777号 | 信息系统安全备案23011443037-21002</p>
+</footer>
+</body>
+<script type="text/javascript" src="/PlantCADB/lib/jquery-3.6.0.js"></script>
+<script src="/PlantCADB/lib/echarts.min.js"></script>
+<script src="/PlantCADB/js/bootstrap.min.js"></script>
+<script type="module" src="/PlantCADB/js/index.js"></script>
+<script type="module" src="/PlantCADB/js/api.js"></script>
+</html>

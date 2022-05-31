@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>PlantCADB-Plant Chromatin Accessibility Database</title>
+	<link rel="icon" type="image/x-icon" href="/PlantCADB/image/favicon.ico">
+	<link href="/PlantCADB/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/PlantCADB/css/fontawesome.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="/PlantCADB/css/header.css">
+	<link rel="stylesheet" href="/PlantCADB/css/footer.css">
+
+
+	<style type="text/css">
+		#accordion .panel-heading{
+		    padding: 0;
+		    border: none;
+		    border-radius: 0;
+		    position: relative;
+		}
+		#accordion .panel-title a{
+		    display: block;
+		    padding: 15px 20px;
+		    margin: 0;
+		    background: #8FBC8F;
+		    font-size: 18px;
+		    font-weight: 700;
+		    letter-spacing: 1px;
+		    color: #fff;
+		    border-radius: 0;
+		    position: relative;
+		}
+		#accordion .panel-title a.collapsed{ 
+			background:  #666666;}
+		#accordion .panel-title a:before,
+		#accordion .panel-title a.collapsed:before{
+		    content: "\f068";
+		    font-family: fontawesome;
+		    width: 30px;
+		    height: 30px;
+		    line-height: 25px;
+		    border-radius: 50%;
+		    background: #8FBC8F;
+		    font-size: 14px;
+		    font-weight: normal;
+		    color: #fff;
+		    text-align: center;
+		    border: 3px solid #fff;
+		    position: absolute;
+		    top: 10px;
+		    right: 14px;
+		}
+		#accordion .panel-title a.collapsed:before{
+		    content: "\f067";
+		    background: #ababab;
+		    border: 4px solid #626262;
+		}
+		#accordion .panel-title a:after,
+		#accordion .panel-title a.collapsed:after{
+		    content: "";
+		    width: 17px;
+		    height: 7px;
+		    background: #fff;
+		    position: absolute;
+		    top: 22px;
+		    right: 0;
+		}
+
+		#accordion .panel-body{
+		    border-left: 3px solid #8FBC8F;
+		    border-top: none;
+		    background: #fff;
+		    font-size: 15px;
+		    color:  #666666;
+		    line-height: 27px;
+		    position: relative;
+		}
+		#accordion .panel-body:before{
+		    content: "";
+		    height: 3px;
+		    width: 100%;
+		    background: #8FBC8F;
+		    position: absolute;
+		    bottom: 0;
+		    left: 0;
+		}
+	</style>
+</head>
+<body><!-- 重置样本查询必须要的-->
+  
+<header>
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+				<a class="navbar-brand" href="/PlantCADB/index"><b style="color:#fff"><i style="color:white">PlantCADB</i></b></a>
+            </div>
+            <div class="navbar-collapse collapse ">
+                <ul class="nav navbar-nav">
+                    <li><a href="/PlantCADB/index">Home</a></li>
+                    <li><a href="/PlantCADB/data-browse">Data-Browse</a></li>
+                    <li class="active"><a href="/PlantCADB/search">Search</a></li>
+					<li><a href="/PlantCADB/Analysis">Analysis</a></li>
+                    <li><a href="/PlantCADB/Genome-Browser">Genome-Browser</a></li>
+                    <li><a href="/PlantCADB/download">Download</a></li>
+                    <li><a href="/PlantCADB/submit">Submit</a></li>
+                    <li><a href="/PlantCADB/help">Help</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div style="font-size: 350%;margin-top: 3%">Search</div>
+			<br/>
+		</div>
+	</div>
+
+	<div class="row" style="margin-bottom: 260px"><!---手风琴开始--->
+
+		<div class="col-lg-12">
+		    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">	<!---手风琴/panel-group/开始--->							
+		       
+		        <div class="panel panel-default"><!---手风琴/tissue-based/start--->
+		            <div class="panel-heading" role="tab" id="headingOne">
+		                <h4 class="panel-title">
+		                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+								Search accessible chromatin region by TF
+							</a>
+		                </h4>
+		            </div>
+		            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+		                <div class="panel-body">
+							<div class="col-lg-6">
+								<form method="get" enctype="multipart/form-data" target="_blank" action="search/search_tf_result">
+									<div class="form-group">
+										<label>Species Name</label>
+										<select class="form-control" name="search_species_byTF" id="search_species_byTF">
+											<option value='' style="color: lightgray">Please choose &nbsp;&nbsp;&nbsp;eg:Arabidopsis thaliana</option>
+											<option value="Arabidopsis thaliana">Arabidopsis thaliana</option>
+											<option value="Solanum lycopersicum">Solanum lycopersicum</option>
+											<option value="Cucumis melo">Cucumis melo</option>
+											<option value="Prunus persica">Prunus persica</option>
+											<option value="Populus trichocarpa">Populus trichocarpa</option>
+											<option value="Pyrus x bretschneideri">Pyrus x bretschneideri</option>
+											<option value="Citrullus lanatus">Citrullus lanatus</option>
+											<option value="Cucumis sativus">Cucumis sativus</option>
+											<option value="Medicago truncatula">Medicago truncatula</option>
+											<option value="Solanum pennellii">Solanum pennellii</option>
+											<option value="Vitis vinifera">Vitis vinifera</option>
+											<option value="Glycine max">Glycine max</option>
+											<option value="Malus domestica">Malus domestica</option>
+											<option value="Fragaria vesca">Fragaria vesca</option>
+											<option value="Solanum phureja">Solanum phureja</option>
+											<option value="Carica papaya">Carica papaya</option>
+											<option value="Arachis hypogaea">Arachis hypogaea</option>
+											<option value="Eutrema salsugineum">Eutrema salsugineum</option>
+											<option value="Phaseolus vulgaris">Phaseolus vulgaris</option>
+											<option value="Gossypium arboreum">Gossypium arboreum</option>
+											<option value="Gossypium barbadense">Gossypium barbadense</option>
+											<option value="Gossypium hirsutum">Gossypium hirsutum</option>
+											<option value="Gossypium raimondii">Gossypium raimondii</option>
+											<option value="Cucumis melo">Cucumis melo</option>
+											<option value="Zea mays">Zea mays</option>
+											<option value="Oryza sativa">Oryza sativa</option>
+											<option value="Sorghum bicolor">Sorghum bicolor</option>
+											<option value="Ananas comosus">Ananas comosus</option>
+											<option value="Setaria italica">Setaria italica</option>
+											<option value="Brachypodium distachyon">Brachypodium distachyon</option>
+											<option value="Musa acuminata">Musa acuminata</option>
+											<option value="Hordeum vulgare">Hordeum vulgare</option>
+											<option value="Setaria viridis">Setaria viridis</option>
+											<option value="Asparagus officinalis">Asparagus officinalis</option>
+											<option value="Spirodela polyrhiza">Spirodela polyrhiza</option>
+											<option value="Triticum aestivum">Triticum aestivum</option>
+											<option value="Eucalyptus grandis">Eucalyptus grandis</option>
+											<option value="Marchantia polymorpha">Marchantia polymorpha</option>
+
+										</select>
+									</div>
+									<div class="form-group">
+										<label>TF Family</label>
+										<select class="form-control"  id="search_TFFamily_byspecies">
+											<option value='' style="color: lightgray">Please choose Species</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>TF Name</label>
+<!--										<input type="text" class="form-control" name="search_name_byTF" id="search_name_byTF" placeholder="TF name  eg:AT1G69560.1">-->
+											<select class="form-control" name="search_name_byTF" id="search_name_byTF" >
+												<option style="color: lightgray" >Please choose</option>
+											</select>
+									</div>
+									<button type="button" class="btn btn-default" style="background-color: #A5C6B5;" onclick="window.open('/PlantCADB/search/search_tf_result?species='+search_species_byTF.value+'&name='+search_name_byTF.value)" ><font color="white" size="3"><strong>Start search</strong></font></button>
+									<button type="Reset" class="btn btn-default" style="background-color: #A5C6B5;"><font color="white" size="3"><strong>Reset</strong></font></button>
+<!--									<a onclick="search_TF_select();" class="btn btn-default" style="background-color: #A5C6B5;"><font color="white" size="3"><strong>For example</strong></font></a><br>-->
+								</form>
+
+							</div>
+							<div class="col-lg-6">
+								<div id="container" class="box" style="height:320px;width: 100%;border: 1px solid rgba(34,36,38,.15);padding: 15px;border-radius:5px;">
+									<div style="font-size: 110%;text-align: justify;margin-top: 8px">
+										<p><strong style="color: #00785a;">Introduction:</strong><br><br>
+											You can submit a TF name for query after selecting species, then PlantCADB can provide you the Sample ID and sequence that binds to the TF. PlantCADB used two methods to identify transcription factor binding sites, one is footprint analysis, and the other is motif scanning analysis. Among them, we only analyze the footprints of ATAC-seq and DNase-seq data. As some species currently do not have motif or gene annotation files, we will supplement the information of the database timely in the future.										</p>
+
+									</div>
+								</div>
+							</div>	
+						</div>
+		            </div>
+		        </div><!---手风琴/tissue-based/end--->
+
+		        <div class="panel panel-default"><!---手风琴/gene-based/start--->
+		            <div class="panel-heading" role="tab" id="headingTwo">
+		                <h4 class="panel-title">
+		                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+								Search accessible chromatin region by gene
+							</a>
+		                </h4>
+		            </div>
+		            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+		                <div class="panel-body">
+							<div class="col-lg-6">
+								<form >
+									<div class="form-group">
+										<label>Species Name</label>
+										<select class="form-control" name="search_species_byGene" id="search_species_byGene">
+											<option value='' style="color: lightgray">Please choose &nbsp;&nbsp;&nbsp;eg:Arabidopsis thaliana</option>
+											<option value="Arabidopsis thaliana">Arabidopsis thaliana</option>
+											<option value="Solanum lycopersicum">Solanum lycopersicum</option>
+											<option value="Cucumis melo">Cucumis melo</option>
+											<option value="Prunus persica">Prunus persica</option>
+											<option value="Populus trichocarpa">Populus trichocarpa</option>
+											<option value="Pyrus x bretschneideri">Pyrus x bretschneideri</option>
+											<option value="Citrullus lanatus">Citrullus lanatus</option>
+											<option value="Cucumis sativus">Cucumis sativus</option>
+											<option value="Medicago truncatula">Medicago truncatula</option>
+											<option value="Solanum pennellii">Solanum pennellii</option>
+											<option value="Vitis vinifera">Vitis vinifera</option>
+											<option value="Glycine max">Glycine max</option>
+											<option value="Malus domestica">Malus domestica</option>
+											<option value="Fragaria vesca">Fragaria vesca</option>
+											<option value="Solanum phureja">Solanum phureja</option>
+											<option value="Carica papaya">Carica papaya</option>
+											<option value="Arachis hypogaea">Arachis hypogaea</option>
+											<option value="Eutrema salsugineum">Eutrema salsugineum</option>
+											<option value="Phaseolus vulgaris">Phaseolus vulgaris</option>
+											<option value="Gossypium arboreum">Gossypium arboreum</option>
+											<option value="Gossypium barbadense">Gossypium barbadense</option>
+											<option value="Gossypium hirsutum">Gossypium hirsutum</option>
+											<option value="Gossypium raimondii">Gossypium raimondii</option>
+											<option value="Cucumis melo">Cucumis melo</option>
+											<option value="Zea mays">Zea mays</option>
+											<option value="Oryza sativa">Oryza sativa</option>
+											<option value="Sorghum bicolor">Sorghum bicolor</option>
+											<option value="Ananas comosus">Ananas comosus</option>
+											<option value="Setaria italica">Setaria italica</option>
+											<option value="Brachypodium distachyon">Brachypodium distachyon</option>
+											<option value="Musa acuminata">Musa acuminata</option>
+											<option value="Hordeum vulgare">Hordeum vulgare</option>
+											<option value="Setaria viridis">Setaria viridis</option>
+											<option value="Asparagus officinalis">Asparagus officinalis</option>
+											<option value="Spirodela polyrhiza">Spirodela polyrhiza</option>
+											<option value="Triticum aestivum">Triticum aestivum</option>
+											<option value="Eucalyptus grandis">Eucalyptus grandis</option>
+											<option value="Marchantia polymorpha">Marchantia polymorpha</option>
+
+										</select>
+									</div>
+									<div class="form-group">
+										<label>Strategies/Algorithm</label>
+										<select class="form-control" name="gene_algorithm" id="search_gene_algorithm">
+											<option value="PROXIMAL">PROXIMAL</option>
+											<option value="CLOSEST">CLOSEST</option>
+											<option value="OVERLAP">OVERLAP</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>Gene ID</label>&nbsp;&nbsp;&nbsp;<label style="color: lightgray;font-size: small;font-family: 'Times New Roman'">( eg : AT1G01060 )</label>
+										<input type="text" class="form-control" name="gene_name" id="search_gene_name" placeholder="Gene ID   eg:AT1G01060">
+
+									</div>
+									<button type="button" class="btn btn-default" style="background-color: #A5C6B5;" onclick="window.open('/PlantCADB/search/search_gene_result?species='+search_species_byGene.value+'&type='+gene_algorithm.value+'&name='+gene_name.value)"><font color="white" size="3"><strong>Start search</strong></font></button>
+									<button type="Reset" class="btn btn-default" style="background-color: #A5C6B5;"><font color="white" size="3"><strong>Reset</strong></font></button>
+<!--									<a onclick="search_gene_select();" class="btn btn-default" style="background-color: #A5C6B5;"><font color="white" size="3"><strong>For example</strong></font></a><br>-->
+
+									<div style="font-size: 90%;text-align: justify;margin-top: 10px;border: 1px solid rgba(34,36,38,.15);padding: 15px;border-radius:5px;">
+										<p><strong style="color: #00785a;">Strategies:</strong><br><br>
+											Overlap:The genes that overlap with the accessible regions of chromatin.<br>
+											Proximal:The 1kb upstream and downstream region of TSS is defined as the TSS range. If this region overlaps with a certain chromatin accessible region, then the corresponding genes are considered to be the Proximal genes of the chromatin accessible region.<br>
+											Closet:The gene closest to the center of the accessible region of chromatin.
+
+										</p>
+									</div>
+								</form>
+							</div>
+							<div class="col-lg-6">
+								<div style="font-size: 120%;text-align: center;margin-top: 2%">
+									<p style="color: #00785a">Search accessible chromatin region by gene</p>
+									<img src="/PlantCADB/image/AssociatedGenes.png" width="100%">
+								</div>
+								<div style="font-size: 110%;text-align: justify;margin-top: 10px;border: 1px solid rgba(34,36,38,.15);padding: 15px;border-radius:5px;">
+									<p><strong style="color: #00785a;">Introduction:</strong><br><br>
+										You can submit a gene name for query after selecting species and strategies, then PlantCADB can provide you a series of information such as region ID. 									</p>
+								</div>
+
+							</div>	
+				        </div>
+		            </div>
+				</div><!---手风琴/gene-based/end--->
+	
+		        <div class="panel panel-default"><!---手风琴/sample-based/start--->
+		                <div class="panel-heading" role="tab" id="headingThree">
+		                    <h4 class="panel-title">
+		                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+									Search accessible chromatin region by genome location
+								</a>
+		                    </h4>
+		                </div>
+		                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+		                   <div class="panel-body">
+
+							   <div class="col-lg-6">
+								   <form name="search_tissue_option" >
+									   <div class="form-group">
+
+										   <label><font color="#004c64">Species Name </font></label>
+										   <select class="form-control" name="species"  id="select_species">
+											   <option value='' style="color: lightgray">Please choose &nbsp;&nbsp;&nbsp;eg:Arabidopsis thaliana</option>
+										   </select>
+									   </div>
+									   <div class="form-group">
+										   <label><font color="#004c64"> Sample ID</font></label>
+										   <br>
+										   <select class="form-control" name="sampleId"  id="select_SampleId">
+											   <option style="color: lightgray">Please choose </option>
+										   </select>
+									   </div>
+									   <div class="form-group">
+										   <label><font color="#004c64">Chromosome</font></label>
+										   <select class="form-control" name="Chr"  id="select_Chr">
+											   <option style="color: lightgray">Please choose </option>
+										   </select>
+									   </div>
+									   <div class="form-group">
+										   <label><font color="#004c64">Start Position</font></label>
+										   <input type="text" name="search_region_start" id="option_start" class="form-control" placeholder="Start Position     eg:119799529" value="-1">
+									   </div>
+									   <div class="form-group">
+										   <label><font color="#004c64">End Position</font></label>
+										   <input type="text" name="search_region_end" id="option_end" class="form-control" placeholder="End Position     eg:149837416" value="-1">
+									   </div>
+
+
+
+									   <button type="button" class="btn btn-default" style="background-color: #A5C6B5;" onclick="window.open('/PlantCADB/search/search_region_result?sampleId='+sampleId.value+'&chrs='+Chr.value+'&start='+search_region_start.value+'&end='+search_region_end.value)"><font color="white" size="3"><strong>Start search</strong></font></button>
+									   <button type="Reset" class="btn btn-default" style="background-color:  #A5C6B5;"><font color="white" size="3"><strong>Reset</strong></font></button>
+<!--									   <a onclick="window.biosample_name.val('H1703');$('#select_Sample_id').val('Sample_0001');search_region_select();" class="btn btn-default" style="background-color:  #A5C6B5;"><font color="white" size="3"><strong>For example</strong></font></a><br>-->
+								   </form>
+							   </div>
+
+								<div class="col-lg-6">
+									<div style="font-size: 110%;text-align: justify;margin-top: 25px;border: 1px solid rgba(34,36,38,.15);border-radius:5px;height: 200px;line-hight:150%;">
+										<p style="margin:15px 5px 15px; "><strong style="color: #00785a;">Introduction:</strong><br><br>
+											You can submit a region for query after selecting species and Sample ID,then PlantCADB can provide you a series of regions within it.Regions information include Species,SampleID,Chromosome,Start position and End position.
+
+										</p>
+
+									</div>	
+								</div>
+
+							</div>
+		                </div>
+		            </div><!---手风琴/sample-based/start--->
+
+
+
+		    </div><!---手风琴/panel-group/结束--->
+		</div>
+	</div><!---手风琴结束--->
+
+
+</div>
+
+<footer>
+	<div style="display: none"><a href="https://www.xn--by-6y6c831p.cn/"></a></div>
+	<p><a href="/PlantCADB/index">Home</a> | <a href="/PlantCADB/data-browse">Data-Browse</a> | <a href="/PlantCADB/search">Search</a> | <a href="/PlantCADB/Analysis">Analysis</a>  |  <a href="/PlantCADB/Genome-Browser">Genome-Browser</a> | <a href="/PlantCADB/download">Download</a> | <a href="/PlantCADB/submit">Submit</a> | <a href="/PlantCADB/help">Help</a></p>
+	<p>Copyright &copy;  Bio Laboratory |黑ICP备19004777号 | 信息系统安全备案23011443037-21002</p>
+</footer>
+
+
+<script type="text/javascript" src="/PlantCADB/lib/jquery-3.6.0.js"></script>
+<script src="/PlantCADB/js/bootstrap.min.js"></script>
+<script src="/PlantCADB/lib/bootstrap-table-all.js"></script>
+<script type="module" src="/PlantCADB/js/search.js"></script>
+<script type="module" src="/PlantCADB/js/api.js"></script>
+
+
+</body>
+</html>

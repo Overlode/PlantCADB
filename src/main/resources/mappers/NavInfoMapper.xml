@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.icec.plantcadb.mapper.NavInfoMapper">
+
+    <!--    public List<Integer> getClassCount();-->
+    <resultMap id="classTypeMap" type="Class">
+        <result property="classNo" column="classno" jdbcType="INTEGER"/>
+        <result property="className" column="classname" jdbcType="VARCHAR"/>
+        <result property="count" column="count(*)" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="getClassCount" resultMap="classTypeMap">
+        SELECT saminfo.classno,classname,count(*) FROM saminfo,class where class.classno=saminfo.classno Group by saminfo.classno
+    </select>
+
+    <resultMap id="dataTypeMap" type="DataType">
+        <result property="dataNo" column="dataNo" jdbcType="INTEGER"/>
+        <result property="typeName" column="typename" jdbcType="VARCHAR"/>
+        <result property="count" column="count(*)" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="getDataTypeCount" resultMap="dataTypeMap">
+        SELECT saminfo.datano,typename,count(*) FROM saminfo,datatype where datatype.datano=saminfo.datano Group by saminfo.datano
+    </select>
+
+    <resultMap id="tissueMap" type="Tissue">
+        <result property="tissueNo" column="tissueno" jdbcType="INTEGER"/>
+        <result property="tissueName" column="tissuename" jdbcType="VARCHAR"/>
+        <result property="count" column="count(*)" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="getTissueCount" resultMap="tissueMap">
+        SELECT saminfo.tissueno,tissuename,count(*) FROM saminfo,tissue where tissue.tissueno=saminfo.tissueno Group by saminfo.tissueno
+    </select>
+
+    <resultMap id="speciesMap" type="Species">
+        <result property="speciesNo" column="speciesno" jdbcType="INTEGER"/>
+        <result property="speciesName" column="speciesname" jdbcType="VARCHAR"/>
+        <result property="count" column="count(*)" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="getSpeciesCount" resultMap="speciesMap">
+        SELECT saminfo.speciesno,speciesname,count(*) FROM saminfo,species where species.speciesno=saminfo.speciesno Group by saminfo.speciesno order by count(*) desc
+    </select>
+
+    <resultMap id="layoutMap" type="Layout">
+        <result property="layoutNo" column="layoutno" jdbcType="INTEGER"/>
+        <result property="layoutName" column="layoutName" jdbcType="VARCHAR"/>
+        <result property="count" column="count(*)" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="getLayoutCount" resultMap="layoutMap">
+        SELECT saminfo.layoutno,layoutname,count(*) FROM saminfo,layout where layout.layoutno=saminfo.layoutno Group by saminfo.layoutno
+    </select>
+    <select id="getSpeciesNameList" resultType="String">
+        select speciesname
+        from species
+        order by speciesname;
+    </select>
+    <select id="getSpeciesTable" resultType="Species">
+        select * from species order by speciesname
+    </select>
+    <select id="getSpeciesNoBySpeciesName" resultType="Integer">
+        select speciesno from species where speciesname=#{speciesName}
+    </select>
+    <select id="getOptions" resultType="SamInfo">
+        select saminfo.*  from classify,saminfo,species where species.speciesno=saminfo.speciesNo and speciesname = #{speciesName} and classify.samno = saminfo.samno and ${option} = 1
+    </select>
+    <select id="getAllOptions" resultType="Options">
+        select options.* from options order by options.optionName
+    </select>
+    <select id="getClassifyCount" resultType="Integer">
+        select count(*) from classify where ${option} = 1
+    </select>
+</mapper>

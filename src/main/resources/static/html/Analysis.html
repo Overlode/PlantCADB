@@ -1,0 +1,379 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>PlantCADB-Plant Chromatin Accessibility Database</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <link rel="icon" type="image/x-icon" href="/PlantCADB/image/favicon.ico">
+
+    <link href="/PlantCADB/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/PlantCADB/css/fontawesome.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/PlantCADB/css/header.css">
+    <link rel="stylesheet" href="/PlantCADB/css/footer.css"/>
+
+
+    <style type="text/css">
+        #accordion .panel-heading{
+            padding: 0;
+            border: none;
+            border-radius: 0;
+            position: relative;
+        }
+        #accordion .panel-title a{
+            display: block;
+            padding: 15px 20px;
+            margin: 0;
+            background:#8FBC8F;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #fff;
+            border-radius: 0;
+            position: relative;
+        }
+        #accordion .panel-title a.collapsed{
+            background: #666666;}
+        #accordion .panel-title a:before,
+        #accordion .panel-title a.collapsed:before{
+            content: "\f068";
+            font-family: fontawesome;
+            width: 30px;
+            height: 30px;
+            line-height: 25px;
+            border-radius: 50%;
+            background: #666666;
+            font-size: 14px;
+            font-weight: normal;
+            color: #fff;
+            text-align: center;
+            border: 3px solid #fff;
+            position: absolute;
+            top: 10px;
+            right: 14px;
+        }
+        #accordion .panel-title a.collapsed:before{
+            content: "\f067";
+            background: #ababab;
+            border: 4px solid #626262;
+        }
+        #accordion .panel-title a:after,
+        #accordion .panel-title a.collapsed:after{
+            content: "";
+            width: 17px;
+            height: 7px;
+            background: #fff;
+            position: absolute;
+            top: 22px;
+            right: 0;
+        }
+
+        #accordion .panel-body{
+            border-left: 3px solid #8FBC8F;
+            border-top: none;
+            background: #fff;
+            font-size: 15px;
+            color:#666666;
+            line-height: 27px;
+            position: relative;
+        }
+        #accordion .panel-body:before{
+            content: "";
+            height: 3px;
+            width: 100%;
+            background: #8FBC8F;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<header>
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/PlantCADB/index"><b style="color:#fff"><i style="color:white">PlantCADB</i></b></a>
+            </div>
+            <div class="navbar-collapse collapse ">
+                <ul class="nav navbar-nav">
+                    <li ><a href="/PlantCADB/index">Home</a></li>
+                    <li><a href="/PlantCADB/data-browse">Data-Browse</a></li>
+                    <li><a href="/PlantCADB/search">Search</a></li>
+                    <li class="active"><a href="/PlantCADB/Analysis">Analysis</a></li>
+                    <li><a href="/PlantCADB/Genome-Browser">Genome-Browser</a></li>
+                    <li><a href="/PlantCADB/download">Download</a></li>
+                    <li><a href="/PlantCADB/submit">Submit</a></li>
+                    <li><a href="/PlantCADB/help">Help</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="container" style="margin-bottom: 280px">
+       <div class="row">
+        <div class="col-lg-12">
+            <p style="font-size: 350%;margin-top: 3%">Analysis</p>
+            <hr>
+        </div>
+    </div>
+            <div class="row"><!---手风琴开始--->
+                <div class="col-md-12 ">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">	<!---手风琴/panel-group/开始--->
+
+
+                        <div class="panel panel-default"><!---手风琴/TF/start--->
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a  role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <span class="glyphicon glyphicon-search"></span> Analysis of differential-overlapping accessible chromatin region
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    <div class="col-lg-6">
+
+                                        <div class="col-lg-12">
+
+                                            <form name="search_tissue_option" >
+                                                <div class="form-group">
+                                                    <label>Species Name</label>
+                                                    <select class="form-control" name="select_species" id="select_species">
+                                                        <option value='' style="color: lightgray">Please choose &nbsp;&nbsp;&nbsp;eg:Arabidopsis thaliana</option>
+                                                        <option value="Arabidopsis thaliana">Arabidopsis thaliana</option>
+                                                        <option value="Solanum lycopersicum">Solanum lycopersicum</option>
+                                                        <option value="Cucumis melo">Cucumis melo</option>
+                                                        <option value="Prunus persica">Prunus persica</option>
+                                                        <option value="Populus trichocarpa">Populus trichocarpa</option>
+                                                        <option value="Pyrus x bretschneideri">Pyrus x bretschneideri</option>
+                                                        <option value="Citrullus lanatus">Citrullus lanatus</option>
+                                                        <option value="Cucumis sativus">Cucumis sativus</option>
+                                                        <option value="Medicago truncatula">Medicago truncatula</option>
+                                                        <option value="Solanum pennellii">Solanum pennellii</option>
+                                                        <option value="Vitis vinifera">Vitis vinifera</option>
+                                                        <option value="Glycine max">Glycine max</option>
+                                                        <option value="Malus domestica">Malus domestica</option>
+                                                        <option value="Fragaria vesca">Fragaria vesca</option>
+                                                        <option value="Solanum phureja">Solanum phureja</option>
+                                                        <option value="Carica papaya">Carica papaya</option>
+                                                        <option value="Arachis hypogaea">Arachis hypogaea</option>
+                                                        <option value="Eutrema salsugineum">Eutrema salsugineum</option>
+                                                        <option value="Phaseolus vulgaris">Phaseolus vulgaris</option>
+                                                        <option value="Gossypium arboreum">Gossypium arboreum</option>
+                                                        <option value="Gossypium barbadense">Gossypium barbadense</option>
+                                                        <option value="Gossypium hirsutum">Gossypium hirsutum</option>
+                                                        <option value="Gossypium raimondii">Gossypium raimondii</option>
+                                                        <option value="Cucumis melo">Cucumis melo</option>
+                                                        <option value="Zea mays">Zea mays</option>
+                                                        <option value="Oryza sativa">Oryza sativa</option>
+                                                        <option value="Sorghum bicolor">Sorghum bicolor</option>
+                                                        <option value="Ananas comosus">Ananas comosus</option>
+                                                        <option value="Setaria italica">Setaria italica</option>
+                                                        <option value="Brachypodium distachyon">Brachypodium distachyon</option>
+                                                        <option value="Musa acuminata">Musa acuminata</option>
+                                                        <option value="Hordeum vulgare">Hordeum vulgare</option>
+                                                        <option value="Setaria viridis">Setaria viridis</option>
+                                                        <option value="Asparagus officinalis">Asparagus officinalis</option>
+                                                        <option value="Spirodela polyrhiza">Spirodela polyrhiza</option>
+                                                        <option value="Triticum aestivum">Triticum aestivum</option>
+                                                        <option value="Eucalyptus grandis">Eucalyptus grandis</option>
+                                                        <option value="Marchantia polymorpha">Marchantia polymorpha</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Experimental Classify</label>
+                                                    <select class="form-control" name="select_classify" id="select_classify" >
+<!--                                                        <option value='' style="color: lightgray">Please choose &nbsp;&nbsp;&nbsp;eg:abiotic stress</option>-->
+<!--                                                        <option value="base">base</option>-->
+<!--                                                        <option value="celltypesspecific">Cell Types Specific</option>-->
+<!--                                                        <option value="tissuespecific">tissue specific</option>-->
+<!--                                                        <option value="genotypevariation">genotype/variation</option>-->
+<!--                                                        <option value="abioticstress">abiotic stress</option>-->
+<!--                                                        <option value="experimentaltechnology">experimental technology</option>-->
+<!--                                                        <option value="development">development</option>-->
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <h4 style="margin-bottom: 8px;"><span class="label label-success" style="background-color: #093d63">Sample 1</span></h4>
+<!--                                                    <label><font color="#004c64">Species Name </font></label>-->
+<!--                                                    <select class="form-control" name="select_species_a"  id="select_species">-->
+<!--                                                    </select>-->
+                                                    <label><font color="#004c64"> Sample ID</font></label>
+                                                    <br>
+                                                    <select class="form-control" name="Sample_id_a"  id="select_SampleId">
+                                                    </select>
+
+                                                    <h4 style="margin-bottom: 8px;"><span class="label label-warning" style="background-color: #1d885d">Sample 2</span></h4>
+<!--                                                    <label><font color="#004c64">Species Name </font></label>-->
+<!--                                                    <select class="form-control" name="select_species_a"  id="select_species1">-->
+
+<!--                                                    </select>-->
+
+                                                    <label><font color="#004c64">Sample ID</font></label>
+                                                    <select class="form-control" name="Sample_id_b" id="select_SampleId1">
+                                                    </select>
+
+                                                </div>
+                                                <button type="button"  class="btn btn-default" style="background-color: #A5C6B5;" id="startAnalysis" onclick="window.open('/PlantCADB/analysis_sample_similar?sampleIdOne='+Sample_id_a.value+'&sampleIdTwo='+Sample_id_b.value)"><font color="white" size="3"><strong>Start analysis</strong></font></button>
+                                                <button type="Reset"  class="btn btn-default" style="background-color: #A5C6B5;"><font color="white" size="3"><strong>Reset</strong></font></button>
+<!--                                                <a onclick="window.biosample_name.val('YB5');window.biosample_name1.val('CD4+ T cell');$('#select_Sample_id').val('Sample_0156');$('#select_Sample_id1').val('Sample_1269')" class="btn btn-default" style="background-color: #A5C6B5;"><font color="white" size="3"><strong>For example</strong></font></a><br>-->
+                                            </form>
+
+
+                                        <div style="font-size: 110%;text-align: justify;margin-top: 10px;border: 1px solid rgba(34,36,38,.15);padding: 15px;border-radius:5px;">
+                                            <p><span style="color: #00785a">Introduction:</span><br>
+                                                You can submit two Sample ID of interest,then PlantCADB can provide you the area of difference and overlapping between the two samples.
+                                            </p>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div style="font-size: 120%;text-align: center;margin-top: 2%">
+                                            <p style="color: #00785a">Analysis of differential-overlapping accessible chromatin region</p>
+                                            <img src="/PlantCADB/image/Analysis-01.png" width="100%">
+                                        </div>
+<!--                                        <div style="font-size: 110%;text-align: justify;">-->
+<!--                                            <p><span style="color: red;margin-top: 10%">Function introduction:</span><br>-->
+<!--                                                Users can submit the ‘Biosample name’s of interest, ATACdb analyze differential and overlapping accessible chromatin regions between two samples.&nbsp;-->
+<!--                                            </p>-->
+<!--                                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!---手风琴/TF/end--->
+                         <div class="panel panel-default"><!---手风琴/TF/start--->
+                             <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <span class="glyphicon glyphicon-search"></span> Analysis of overlapping accessible chromatin regions bound by two TFs
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                <div class="panel-body">
+                                    <div class="col-lg-6">
+                                         <form >
+
+                                             <div class="form-group">
+                                                 <label>Species Name</label>
+                                                 <select class="form-control" name="analysis_species_byTF" id="analysis_species_byTF">
+                                                     <option value='' style="color: lightgray">Please choose &nbsp;&nbsp;&nbsp;eg:Arabidopsis thaliana</option>
+                                                     <option value="Arabidopsis thaliana">Arabidopsis thaliana</option>
+                                                     <option value="Solanum lycopersicum">Solanum lycopersicum</option>
+                                                     <option value="Cucumis melo">Cucumis melo</option>
+                                                     <option value="Prunus persica">Prunus persica</option>
+                                                     <option value="Populus trichocarpa">Populus trichocarpa</option>
+                                                     <option value="Pyrus x bretschneideri">Pyrus x bretschneideri</option>
+                                                     <option value="Citrullus lanatus">Citrullus lanatus</option>
+                                                     <option value="Cucumis sativus">Cucumis sativus</option>
+                                                     <option value="Medicago truncatula">Medicago truncatula</option>
+                                                     <option value="Solanum pennellii">Solanum pennellii</option>
+                                                     <option value="Vitis vinifera">Vitis vinifera</option>
+                                                     <option value="Glycine max">Glycine max</option>
+                                                     <option value="Malus domestica">Malus domestica</option>
+                                                     <option value="Fragaria vesca">Fragaria vesca</option>
+                                                     <option value="Solanum phureja">Solanum phureja</option>
+                                                     <option value="Carica papaya">Carica papaya</option>
+                                                     <option value="Arachis hypogaea">Arachis hypogaea</option>
+                                                     <option value="Eutrema salsugineum">Eutrema salsugineum</option>
+                                                     <option value="Phaseolus vulgaris">Phaseolus vulgaris</option>
+                                                     <option value="Gossypium arboreum">Gossypium arboreum</option>
+                                                     <option value="Gossypium barbadense">Gossypium barbadense</option>
+                                                     <option value="Gossypium hirsutum">Gossypium hirsutum</option>
+                                                     <option value="Gossypium raimondii">Gossypium raimondii</option>
+                                                     <option value="Cucumis melo">Cucumis melo</option>
+                                                     <option value="Zea mays">Zea mays</option>
+                                                     <option value="Oryza sativa">Oryza sativa</option>
+                                                     <option value="Sorghum bicolor">Sorghum bicolor</option>
+                                                     <option value="Ananas comosus">Ananas comosus</option>
+                                                     <option value="Setaria italica">Setaria italica</option>
+                                                     <option value="Brachypodium distachyon">Brachypodium distachyon</option>
+                                                     <option value="Musa acuminata">Musa acuminata</option>
+                                                     <option value="Hordeum vulgare">Hordeum vulgare</option>
+                                                     <option value="Setaria viridis">Setaria viridis</option>
+                                                     <option value="Asparagus officinalis">Asparagus officinalis</option>
+                                                     <option value="Spirodela polyrhiza">Spirodela polyrhiza</option>
+                                                     <option value="Triticum aestivum">Triticum aestivum</option>
+                                                     <option value="Eucalyptus grandis">Eucalyptus grandis</option>
+                                                     <option value="Marchantia polymorpha">Marchantia polymorpha</option>
+
+                                                 </select>
+                                             </div>
+
+                                       <div class="form-group" style="margin-bottom: 15px">
+                                                <h4><label><span class="label label-success">TF 1 Name</span></label></h4>
+
+                                                <select class="form-control" name="alys_TFOnename" id="alys_TFOnename" >
+                                                </select>
+                                       </div>
+                                       <div class="form-group" style="margin-bottom: 5px">
+                                               <h4> <label><span class="label label-warning">TF 2 Name</span></label></h4>
+                                                <select class="form-control" name="alys_TFTwoname" id="alys_TFTwoname">
+                                                </select>
+                                        </div>
+                                        <div class="form-group" >
+                                                <label>Window length</label>
+                                                <input type="text" class="form-control" name="alys_length" id="alys_length" placeholder="Window length  eg:100" />
+                                         </div>
+                                        <button type="button" class="btn btn-default"  style="background-color: #A5C6B5;" onclick="window.open('/PlantCADB/analysis_tf_bind?species='+analysis_species_byTF.value+'&TFOneName='+alys_TFOnename.value+'&TFTwoName='+alys_TFTwoname.value+'&length='+alys_length.value)"><font color="white" size="3"><strong>Start analysis</strong></font></button>
+                                            <button type="Reset" class="btn btn-default"  style="background-color: #A5C6B5;"><font color="white" size="3"><strong>Reset</strong></font></button>
+<!--                                            <a ONCLICK="search_TF_select();" class="btn btn-default"  style="background-color: #A5C6B5;"><font color="white" size="3"><strong>For example</strong></font></a><br/>-->
+                                        </form>
+
+
+                                    </div>
+                                    <div class="col-lg-6" >
+                                        <div style="font-size: 115%;text-align: center;margin-top: 5%;">
+                                            <div style="margin-left:-5%;">
+                                            <p style="color: #00785a">Analysis of overlapping accessible chromatin regions bound by two TFs</p>
+                                            </div>
+                                            <img src="/PlantCADB/image/TFanalysis.png" width="100%" height="200px">
+                                        </div>
+                                        <div style="font-size: 110%;text-align: justify;margin-top: 10px;border: 1px solid rgba(34,36,38,.15);padding: 15px;border-radius:5px;">
+                                            <p><span style="color: #00785a">Introduction:</span><br>
+                                                You can submit two TFs name of interest and set window length,then PlantCADB can provide you the overlapping area between the two TFs.<br>
+                                            </p>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!---手风琴/TF/end--->
+                  
+
+
+
+
+                    </div><!---手风琴/panel-group/结束--->
+                </div>
+            </div><!---手风琴结束--->
+</div>
+
+<footer>
+    <div style="display: none"><a href="https://www.xn--by-6y6c831p.cn/"></a></div>
+    <p><a href="/PlantCADB/index">Home</a> | <a href="/PlantCADB/data-browse">Data-Browse</a> | <a href="/PlantCADB/search">Search</a> | <a href="/PlantCADB/Analysis">Analysis</a>  |  <a href="/PlantCADB/Genome-Browser">Genome-Browser</a> | <a href="/PlantCADB/download">Download</a> | <a href="/PlantCADB/submit">Submit</a> | <a href="/PlantCADB/help">Help</a></p>
+    <p>Copyright &copy;  Bio Laboratory |黑ICP备19004777号 | 信息系统安全备案23011443037-21002</p>
+</footer>
+
+
+<script type="text/javascript" src="/PlantCADB/lib/jquery-3.6.0.js"></script>
+<script src="/PlantCADB/js/bootstrap.min.js"></script>
+<script src="/PlantCADB/lib/bootstrap-table-all.js"></script>
+<script src="/PlantCADB/lib/echarts.min.js"></script>
+<script type="module" src="/PlantCADB/js/analysis.js"></script>
+<script type="module" src="/PlantCADB/js/api.js"></script>
+</body>
+</html>
+

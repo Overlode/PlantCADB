@@ -1,0 +1,293 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head xmlns="">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PlantCADB-Plant Chromatin Accessibility Database</title>
+    <link rel="icon" type="image/x-icon" href="/PlantCADB/image/favicon.ico">
+
+
+    <link href="/PlantCADB/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/PlantCADB/lib/bootstrap-table.min.css">
+    <link href="/PlantCADB/css/fontawesome.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/PlantCADB/css/header.css">
+    <link rel="stylesheet" href="/PlantCADB/css/footer.css"/>
+
+
+</head>
+
+<body>
+
+<header>
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/PlantCADB/index"><b style="color:#fff"><i style="color:white">PlantCADB</i></b></a>
+            </div>
+            <div class="navbar-collapse collapse ">
+                <ul class="nav navbar-nav">
+                    <li ><a href="/PlantCADB/index">Home</a></li>
+                    <li><a href="/PlantCADB/data-browse">Data-Browse</a></li>
+                    <li><a href="/PlantCADB/search">Search</a></li>
+                    <li class="active"><a href="/PlantCADB/Analysis">Analysis</a></li>
+                    <li><a href="/PlantCADB/Genome-Browser">Genome-Browser</a></li>
+                    <li><a href="/PlantCADB/download">Download</a></li>
+                    <li><a href="/PlantCADB/submit">Submit</a></li>
+                    <li><a href="/PlantCADB/help">Help</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+
+
+<!--------overview start-------->
+  <div class="row">
+    <div class="col-lg-12">
+      <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Sample Overview</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+
+      <div class="panel panel-success">
+        <div class="panel-heading"> 
+          <div class="panel-tittle">
+          </div>
+        </div>
+        <div class="panel-body">
+            <div class="col-lg-6">
+            <table class="table table-hover" style="table-layout: fixed;word-break: break-all">
+              <thead>
+                <th><h4 style="margin-bottom: 0px;">Sample Infomation</h4></th>
+                <th><h4 style="margin-bottom: 0px;"><span class="label label-warning"style="background-color: #093d63">Sample 1</span></h4></th>
+                <th><h4 style="margin-bottom: 0px;"><span class="label label-warning" style="background-color: #1d885d">Sample 2</span></h4></th>
+              </thead>
+              <tbody>
+                    <tr style="color: red;font-weight:bold;">
+                        <td><strong>Region ID:</strong></td>
+                        <td id="regionID"></td>
+                        <td id="regionID1"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Type:</strong></td>
+                        <td id="datatype"></td>
+                        <td id="datatype1"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Class:</strong></td>
+                        <td id="class"></td>
+                        <td id="class1"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Layout:</strong></td>
+                        <td id="layout"></td>
+                        <td id="layout1"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Species:</strong></td>
+                        <td id="species"></td>
+                        <td id="species1"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Description:</strong></td>
+                        <td id="description"></td>
+                        <td id="description1"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tissue:</strong></td>
+                        <td id="tissue"></td>
+                        <td id="tissue1"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Region Number:</strong></td>
+                        <td id="regionNumber"></td>
+                        <td id="regionNumber1"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Region Length:</strong></td>
+                        <td id="regionLength"></td>
+                        <td id="regionLength1"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Runs:</strong></td>
+                        <td id="Runs"></td>
+                        <td id="Runs1"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>TSS enrichment score:</strong></td>
+                        <td id="tss_score"></td>
+                        <td id="tss_score1"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>FRiP:</strong></td>
+                        <td id="FRiP"></td>
+                        <td id="FRiP1"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mean insert size:</strong></td>
+                        <td id="Mean_insert_size"></td>
+                        <td id="Mean_insert_size1"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Standard deviation:</strong></td>
+                        <td id="Standard_deviation"></td>
+                        <td id="Standard_deviation1"></td>
+                    </tr>
+<!--                    <tr>-->
+<!--                        <td><strong>Motif:</strong></td>-->
+<!--                        <td id="motif"></td>-->
+<!--                        <td id="motif1"></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td><strong>dACR:</strong></td>-->
+<!--                        <td id="dacr"></td>-->
+<!--                        <td id="dacr1"></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td><strong>gACR:</strong></td>-->
+<!--                        <td id="gacr"></td>-->
+<!--                        <td id="gacr1"></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td><strong>pACR:</strong></td>-->
+<!--                        <td id="pacr"></td>-->
+<!--                        <td id="pacr1"></td>-->
+<!--                    </tr>-->
+              </tbody>
+            </table>
+            </div>
+              <div class="col-lg-6" >
+                <center><strong> Differential and overlapping regions statistic</strong> </center>
+              
+              <div class="col-lg-6">
+                <div id="table_a_overlap_ratio_pic" style="height:300px;width: 255px"></div>
+
+              </div>
+              <div class="col-lg-6">
+                <div id="table_b_overlap_ratio_pic" style="height:300px;width: 255px"></div>
+
+              </div>
+                  <center><strong> Accessible regions distribution of type</strong> </center>
+
+                  <div class="col-lg-6">
+                      <div id="acr" style="height:300px;width: 255px"></div>
+
+                  </div>
+                  <div class="col-lg-6">
+                      <div id="acr1" style="height:300px;width: 255px"></div>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div> 
+<!--------overview 结束-------->
+<!--------not overlap start-------->
+    <div class="row">
+        <div class="col-lg-12">
+            <hr>
+            <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Differential regions</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <div class="panel-tittle">
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <h3><span class="label label-success" style="background-color: #093d63">Sample 1</span></h3>
+                    <table  id="differential_Region_Table"  class="table table-hover" >
+
+                    </table>
+
+                    <h3><span class="label label-warning" style="background-color: #1d885d">Sample 2</span></h3>
+                    <table  id="differential_Region_Table1"  class="table table-hover" >
+
+                    </table>
+                  </div>
+
+
+                </div>
+            </div>
+        </div>
+
+<!--------not overlap 结束-------->
+
+<!--------overlap start-------->
+    <div class="row">
+        <div class="col-lg-12">
+            <hr>
+            <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Overlapping regions</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <div class="panel-tittle">
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-lg-12" style="overflow:scroll;">
+                     
+                    <table id="overlap_Region_Table"  class="table table-hover">
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------fimo 结束-------->
+
+
+
+
+
+
+
+    </div>
+    </div>
+
+</div>
+
+<footer>
+    <div style="display: none"><a href="https://www.xn--by-6y6c831p.cn/"></a></div>
+    <p><a href="/PlantCADB/index">Home</a> | <a href="/PlantCADB/data-browse">Data-Browse</a> | <a href="/PlantCADB/search">Search</a> | <a href="/PlantCADB/Analysis">Analysis</a>  |  <a href="/PlantCADB/Genome-Browser">Genome-Browser</a> | <a href="/PlantCADB/download">Download</a> | <a href="/PlantCADB/submit">Submit</a> | <a href="/PlantCADB/help">Help</a></p>
+    <p>Copyright &copy;  Bio Laboratory |黑ICP备19004777号 | 信息系统安全备案23011443037-21002</p>
+</footer>
+
+
+
+<script type="text/javascript" src="/PlantCADB/lib/jquery-3.6.0.js"></script>
+<script src="/PlantCADB/js/bootstrap.min.js"></script>
+<script src="/PlantCADB/lib/echarts.min.js"></script>
+<script src="/PlantCADB/lib/bootstrap-table-all.js"></script>
+<script type="module" src="/PlantCADB/js/analysis_sample.js"></script>
+<script type="module" src="/PlantCADB/js/api.js"></script>
+</body>
+</html>
+
